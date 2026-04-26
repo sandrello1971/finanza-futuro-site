@@ -19,7 +19,7 @@ const {
   noIndex = false,
 } = Astro.props;
 
-const SITE_URL = 'https://finanzafuturo.it';
+const SITE_URL = 'https://www.finanzafuturo.it';
 const SITE_NAME = 'Finanza & Futuro';
 const fullTitle = title.includes(SITE_NAME) ? title : `${title} | ${SITE_NAME}`;
 const canonicalUrl = new URL(canonicalPath, SITE_URL).toString();
@@ -29,9 +29,9 @@ const organizationLd = {
   '@context': 'https://schema.org',
   '@type': 'FinancialService',
   name: SITE_NAME,
-  legalName: '[Ragione Sociale da inserire]', // TODO: sostituire con dati reali
+  legalName: 'Felice Eugenio Andolfi',
   alternateName: 'Finanza e Futuro',
-  taxID: '[P.IVA da inserire]', // TODO: sostituire con dati reali
+  taxID: '13440600156',
   url: SITE_URL,
   logo: `${SITE_URL}/images/finanza-futuro-logo.png`,
   image: `${SITE_URL}/images/finanza-futuro-logo.png`,
@@ -40,9 +40,9 @@ const organizationLd = {
   slogan: 'Educhiamo per proteggere il tuo patrimonio',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Via Alberto da Giussano 17',
-    addressLocality: 'Milano',
-    postalCode: '20145',
+    streetAddress: 'Via Montessori',
+    addressLocality: 'Corsico',
+    postalCode: '20094',
     addressRegion: 'MI',
     addressCountry: 'IT',
   },

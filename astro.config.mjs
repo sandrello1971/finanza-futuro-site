@@ -6,7 +6,7 @@ import react from '@astrojs/react';
 import icon from 'astro-icon';
 
 export default defineConfig({
-  site: 'https://finanzafuturo.it',
+  site: 'https://www.finanzafuturo.it',
   trailingSlash: 'never',
   build: {
     format: 'file',

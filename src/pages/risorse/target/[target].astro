@@ -59,17 +59,19 @@ const sorted = enriched.sort(
           Tutti
         </a>
         {
-          Object.entries(TARGET_META).map(([key, m]) => {
-            const active = key === targetKey;
-            return (
-              <a
-                href={`/risorse/target/${key}`}
-                class={`px-4 py-2 rounded-full text-sm font-medium ${active ? 'bg-foreground text-background' : 'bg-background border border-border hover:border-accent transition-smooth'}`}
-              >
-                {m.label}
-              </a>
-            );
-          })
+          Object.entries(TARGET_META)
+            .filter(([key]) => key !== 'famiglie-hnwi')
+            .map(([key, m]) => {
+              const active = key === targetKey;
+              return (
+                <a
+                  href={`/risorse/target/${key}`}
+                  class={`px-4 py-2 rounded-full text-sm font-medium ${active ? 'bg-foreground text-background' : 'bg-background border border-border hover:border-accent transition-smooth'}`}
+                >
+                  {m.label}
+                </a>
+              );
+            })
         }
       </div>
     </section>
@@ -78,12 +80,19 @@ const sorted = enriched.sort(
       <div class="container-wealth">
         {
           sorted.length === 0 ? (
-            <p class="text-muted-foreground text-center py-16">
-              Ancora nessun video pubblicato per questo target.{' '}
-              <a href="/risorse" class="text-accent hover:underline">
-                Vedi tutte le risorse →
-              </a>
-            </p>
+            <div class="max-w-2xl mx-auto text-center py-12 px-6 bg-muted/30 rounded-2xl border border-border">
+              <h2 class="text-xl font-heading font-bold mb-3">Ancora nessun video</h2>
+              <p class="text-muted-foreground mb-6 leading-relaxed">
+                Non abbiamo ancora pubblicato video per il segmento {meta.label}.
+                Iscriviti al{' '}
+                <a href="/risorse/rss.xml" class="text-accent hover:underline">feed RSS</a>{' '}
+                per essere avvisato, oppure esplora tutte le risorse.
+              </p>
+              <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                <a href="/risorse" class="btn-primary">Tutte le risorse</a>
+                <a href="/contatti" class="btn-accent">Iscriviti agli aggiornamenti</a>
+              </div>
+            </div>
           ) : (
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {sorted.map(({ entry, derived }) => {
