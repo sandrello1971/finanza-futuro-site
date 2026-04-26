@@ -5,9 +5,14 @@ import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
 import { Icon } from 'astro-icon/components';
 import { TARGET_META } from '@/lib/target-meta';
+import { deriveEntry } from '@/lib/content';
 
-const all = (await getCollection('risorse')).sort(
-  (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime()
+const all = await getCollection('risorse');
+const enriched = await Promise.all(
+  all.map(async (entry) => ({ entry, derived: await deriveEntry(entry) }))
+);
+const sorted = enriched.sort(
+  (a, b) => b.derived.publishedAt.getTime() - a.derived.publishedAt.getTime()
 );
 ---
 
@@ -63,27 +68,23 @@ const all = (await getCollection('risorse')).sort(
     <section class="section-padding bg-background">
       <div class="container-wealth">
         {
-          all.length === 0 ? (
+          sorted.length === 0 ? (
             <p class="text-muted-foreground text-center py-16">Nessuna risorsa disponibile.</p>
           ) : (
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {all.map((entry) => {
+              {sorted.map(({ entry, derived }) => {
                 const m = TARGET_META[entry.data.target];
-                const thumb =
-                  entry.data.thumbnail ??
-                  `https://img.youtube.com/vi/${entry.data.youtubeId}/maxresdefault.jpg`;
-                const slug = entry.id;
                 return (
                   <a
-                    href={`/risorse/${slug}`}
+                    href={`/risorse/${entry.id}`}
                     class="group card-wealth p-0 overflow-hidden flex flex-col"
                   >
                     <div class="relative aspect-video bg-muted overflow-hidden">
                       <img
-                        src={thumb}
-                        alt={entry.data.title}
+                        src={derived.thumbnail}
+                        alt={derived.title}
                         loading="lazy"
-                        onerror={`this.onerror=null;this.src='https://img.youtube.com/vi/${entry.data.youtubeId}/hqdefault.jpg'`}
+                        onerror={`this.onerror=null;this.src='https://img.youtube.com/vi/${derived.youtubeId}/hqdefault.jpg'`}
                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                       <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
@@ -92,9 +93,11 @@ const all = (await getCollection('risorse')).sort(
                           class="w-16 h-16 text-white/90 drop-shadow-lg"
                         />
                       </div>
-                      <span class="absolute bottom-2 right-2 px-2 py-1 bg-black/70 text-white text-xs rounded">
-                        {entry.data.duration}
-                      </span>
+                      {derived.duration && (
+                        <span class="absolute bottom-2 right-2 px-2 py-1 bg-black/70 text-white text-xs rounded">
+                          {derived.duration}
+                        </span>
+                      )}
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
                       <span
@@ -103,10 +106,10 @@ const all = (await getCollection('risorse')).sort(
                         {m.label}
                       </span>
                       <h2 class="font-heading font-bold text-lg mb-2 group-hover:text-accent transition-smooth">
-                        {entry.data.title}
+                        {derived.title}
                       </h2>
                       <p class="text-sm text-muted-foreground line-clamp-3 flex-grow">
-                        {entry.data.excerpt}
+                        {derived.excerpt}
                       </p>
                     </div>
                   </a>

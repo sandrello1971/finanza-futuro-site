@@ -114,6 +114,48 @@ www.finanzafuturo.it      CNAME  cname.vercel-dns.com
 
 Tutto il contenuto è dentro le pagine `.astro` in `src/pages/` e nei componenti in `src/components/`. Modifica → `git push` → Vercel fa redeploy automatico in 30–60 secondi.
 
+### Pubblicare un nuovo video
+
+Il flusso è ottimizzato per ridurre il lavoro manuale: lo script `npm run video` crea il file `.md` pre-compilato a partire dal solo URL YouTube.
+
+```bash
+npm run video https://www.youtube.com/watch?v=ABCDEF12345
+```
+
+Lo script:
+
+1. Estrae l'ID YouTube dall'URL.
+2. Recupera il titolo via oEmbed (pubblico, niente API key).
+3. Se è impostato `YOUTUBE_API_KEY`, recupera anche la durata via YouTube Data API v3.
+4. Se è installato `youtube-transcript` (optional dependency), prova a scaricare i sottotitoli automatici italiani.
+5. Genera `src/content/risorse/AAAA-MM-GG-slug.md` con i campi pre-compilati.
+
+Dopodiché serve solo:
+
+- Sostituire `target` (uno fra `dirigenti`, `post-exit`, `famiglie-hnwi`, `generale`).
+- Scrivere 3–6 `takeaway` significativi.
+- Eventualmente correggere la trascrizione e l'introduzione.
+- `git add . && git commit && git push` — Vercel ricostruisce in automatico.
+
+Schema minimo del frontmatter (solo 3 campi sono obbligatori):
+
+```yaml
+---
+youtubeUrl: "https://www.youtube.com/watch?v=..."   # obbligatorio
+target: "dirigenti"                                  # obbligatorio
+takeaway:                                            # obbligatorio (2–6 voci)
+  - "Punto chiave 1"
+  - "Punto chiave 2"
+# Tutti opzionali (override manuale solo se serve):
+# title: "..."          # default: titolo da oEmbed
+# excerpt: "..."        # default: primo paragrafo del body
+# duration: "12:34"     # default: nessun badge durata
+# thumbnail: "/..."     # default: maxresdefault.jpg di YouTube
+---
+```
+
+Il prefisso `AAAA-MM-GG-` del filename determina la data di pubblicazione (usata per ordinamento, RSS, JSON-LD `uploadDate`). Il resto è lo slug usato come URL: `/risorse/2026-05-10-mio-video`.
+
 ### Punti caldi da aggiornare quando hai i dati definitivi
 
 - **Email contatto**: in `src/components/Footer.astro` e in `src/layouts/BaseLayout.astro` (JSON-LD) c'è `info@finanzafuturo.it`. Sostituisci con quella reale.

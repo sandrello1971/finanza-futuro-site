@@ -1,11 +1,7 @@
 ---
-title: "Come gestire RSU e stock option da dirigente"
-youtubeId: "dQw4w9WgXcQ"
+youtubeUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
 target: "dirigenti"
-publishedAt: 2026-04-15
-duration: "12:34"
-durationISO: "PT12M34S"
-excerpt: "Guida pratica alla gestione fiscale di RSU e stock option per dirigenti: vesting, tassazione al maturare, strategie di diversificazione dalla concentrazione azionaria."
+title: "Come gestire RSU e stock option da dirigente"
 takeaway:
   - "Le RSU sono tassate come reddito da lavoro al momento del vesting, non alla vendita"
   - "La concentrazione su azioni del datore di lavoro è il primo rischio da diversificare"
