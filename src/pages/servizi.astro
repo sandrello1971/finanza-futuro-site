@@ -1,0 +1,290 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import { Icon } from 'astro-icon/components';
+
+const coreServices = [
+  {
+    icon: 'lucide:trending-up',
+    title: 'Gestione Patrimoniale',
+    description:
+      'Asset allocation strategica, selezione investimenti e monitoraggio performance con approccio evidence-based.',
+    features: [
+      'Portafogli diversificati',
+      'ETF e fondi selezionati',
+      'Rebalancing sistematico',
+      'Reporting trasparente',
+    ],
+  },
+  {
+    icon: 'lucide:calculator',
+    title: 'Tax Planning',
+    description:
+      'Ottimizzazione fiscale attraverso strumenti legali e strutture di investimento tax-efficient.',
+    features: [
+      'Regime amministrato',
+      'PIR e PIC',
+      'Fondi lussemburghesi',
+      'Consulenza fiscale integrata',
+    ],
+  },
+  {
+    icon: 'lucide:shield',
+    title: 'Wealth Protection',
+    description:
+      'Protezione patrimoniale da rischi legali, familiari e imprenditoriali attraverso strutture dedicate.',
+    features: [
+      'Trust e vincoli familiari',
+      'Polizze unit linked',
+      'Segregazione patrimoniale',
+      'Asset protection planning',
+    ],
+  },
+  {
+    icon: 'lucide:file-text',
+    title: 'Estate Planning',
+    description:
+      'Pianificazione successoria per trasferire il patrimonio alle future generazioni in modo efficiente.',
+    features: [
+      'Testamenti e donazioni',
+      'Patti di famiglia',
+      'Trust successori',
+      'Minimizzazione imposte successorie',
+    ],
+  },
+];
+
+const additionalServices = [
+  {
+    icon: 'lucide:pie-chart',
+    title: 'Financial Planning',
+    description:
+      'Pianificazione finanziaria completa per raggiungere obiettivi di vita specifici.',
+  },
+  {
+    icon: 'lucide:users',
+    title: 'Family Office',
+    description:
+      'Servizi integrati per famiglie HNWI con patrimoni complessi e multi-generazionali.',
+  },
+];
+
+const process = [
+  {
+    step: '1',
+    title: 'Analisi Patrimoniale',
+    description:
+      'Valutazione completa della situazione finanziaria attuale e definizione degli obiettivi.',
+  },
+  {
+    step: '2',
+    title: 'Strategia Personalizzata',
+    description:
+      'Sviluppo di una strategia di investimento su misura basata su profilo di rischio e obiettivi.',
+  },
+  {
+    step: '3',
+    title: 'Implementazione',
+    description:
+      'Esecuzione della strategia attraverso strumenti selezionati e piattaforme ottimali.',
+  },
+  {
+    step: '4',
+    title: 'Monitoraggio Continuo',
+    description: 'Supervisione costante, rebalancing periodico e aggiornamenti strategici.',
+  },
+];
+---
+
+<BaseLayout
+  title="Servizi di consulenza patrimoniale integrata"
+  description="Gestione patrimoniale, tax planning, wealth protection, estate planning, financial planning e family office. Soluzioni integrate per la gestione, protezione e crescita del patrimonio."
+  pageType="Service"
+  canonicalPath="/servizi"
+>
+  <Header />
+  <main class="flex-grow">
+    <!-- Hero -->
+    <section class="bg-gradient-primary text-primary-foreground py-20 lg:py-32">
+      <div class="container-wealth">
+        <div class="text-center max-w-4xl mx-auto">
+          <div
+            class="inline-flex items-center px-4 py-2 rounded-full bg-primary-foreground/10 border border-primary-foreground/20 mb-8"
+          >
+            <span class="text-sm font-medium">I Nostri Servizi</span>
+          </div>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold mb-6 leading-tight">
+            Servizi di
+            <span class="text-accent">consulenza patrimoniale</span>
+            integrata
+          </h1>
+          <p class="text-xl lg:text-2xl mb-8 text-primary-foreground/80 leading-relaxed">
+            Soluzioni complete per la gestione, protezione e crescita del tuo patrimonio.
+            Competenza e trasparenza in ogni servizio.
+          </p>
+          <a
+            href="https://wa.me/393396005487"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-on-dark"
+          >
+            <Icon name="lucide:calendar" class="w-5 h-5" />
+            Scopri il servizio più adatto
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Services -->
+    <section class="section-padding bg-background">
+      <div class="container-wealth">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl lg:text-4xl font-heading font-bold text-foreground mb-6">
+            I nostri servizi principali
+          </h2>
+          <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
+            Quattro pilastri per una gestione patrimoniale completa e professionale
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {
+            coreServices.map((service) => (
+              <div class="card-wealth">
+                <div class="flex items-start space-x-6 mb-6">
+                  <div class="inline-flex items-center justify-center w-12 h-12 bg-accent/10 rounded-full flex-shrink-0">
+                    <Icon name={service.icon} class="w-6 h-6 text-accent" />
+                  </div>
+                  <div>
+                    <h3 class="text-xl font-heading font-bold text-foreground mb-3">
+                      {service.title}
+                    </h3>
+                    <p class="text-muted-foreground leading-relaxed mb-4">{service.description}</p>
+                  </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {service.features.map((feature) => (
+                    <div class="flex items-center space-x-2">
+                      <Icon
+                        name="lucide:check-circle"
+                        class="w-4 h-4 text-accent flex-shrink-0"
+                      />
+                      <span class="text-sm text-muted-foreground">{feature}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Additional Services -->
+    <section class="section-padding bg-muted/30">
+      <div class="container-wealth">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl lg:text-4xl font-heading font-bold text-foreground mb-6">
+            Servizi specialistici
+          </h2>
+          <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
+            Soluzioni avanzate per esigenze specifiche e patrimoni complessi
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          {
+            additionalServices.map((service) => (
+              <div class="card-wealth text-center">
+                <div class="inline-flex items-center justify-center w-16 h-16 bg-accent/10 rounded-full mb-6">
+                  <Icon name={service.icon} class="w-8 h-8 text-accent" />
+                </div>
+                <h3 class="text-xl font-heading font-bold text-foreground mb-4">
+                  {service.title}
+                </h3>
+                <p class="text-muted-foreground leading-relaxed">{service.description}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section class="section-padding bg-background">
+      <div class="container-wealth">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl lg:text-4xl font-heading font-bold text-foreground mb-6">
+            Il nostro metodo in 4 step
+          </h2>
+          <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
+            Un approccio strutturato e trasparente per la gestione del tuo patrimonio
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {
+            process.map((step) => (
+              <div class="text-center">
+                <div class="inline-flex items-center justify-center w-16 h-16 bg-accent rounded-full text-accent-foreground font-bold text-xl mb-6">
+                  {step.step}
+                </div>
+                <h3 class="text-xl font-heading font-bold text-foreground mb-4">{step.title}</h3>
+                <p class="text-muted-foreground leading-relaxed">{step.description}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Trasparenza -->
+    <section class="section-padding bg-muted/30">
+      <div class="container-wealth">
+        <div class="max-w-4xl mx-auto text-center">
+          <h2 class="text-3xl lg:text-4xl font-heading font-bold text-foreground mb-8">
+            Trasparenza totale nei compensi
+          </h2>
+          <p class="text-xl text-muted-foreground mb-8">
+            La nostra fee structure è sempre chiara e comunicata in anticipo. Nessun costo nascosto,
+            nessuna sorpresa.
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="card-accent text-center">
+              <h3 class="text-lg font-heading font-bold text-foreground mb-2">Fee Management</h3>
+              <p class="text-muted-foreground text-sm">
+                Commissioni di gestione competitive e trasparenti
+              </p>
+            </div>
+            <div class="card-accent text-center">
+              <h3 class="text-lg font-heading font-bold text-foreground mb-2">No Hidden Costs</h3>
+              <p class="text-muted-foreground text-sm">Tutti i costi comunicati ex-ante</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section-padding bg-background">
+      <div class="container-wealth text-center">
+        <h2 class="text-3xl lg:text-4xl font-heading font-bold text-foreground mb-6">
+          Quale servizio è più adatto alle tue esigenze?
+        </h2>
+        <p class="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+          Ogni situazione patrimoniale è unica. Parliamo delle tue esigenze specifiche.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="https://wa.me/393396005487"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary"
+          >
+            <Icon name="lucide:calendar" class="w-5 h-5" />
+            Consulenza gratuita personalizzata
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

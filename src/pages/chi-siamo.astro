@@ -1,0 +1,212 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import { Icon } from 'astro-icon/components';
+
+const values = [
+  {
+    icon: 'lucide:shield',
+    title: 'Trasparenza Totale',
+    description:
+      'Tutte le strategie sono condivise al fine di raggiungere gli obiettivi prefissati.',
+  },
+  {
+    icon: 'lucide:heart',
+    title: 'Relazione Umana',
+    description:
+      'Advisory personalizzato con consulenti esperti, non algoritmi o call center.',
+  },
+  {
+    icon: 'lucide:trending-up',
+    title: 'Competenza Verificabile',
+    description: 'Risultati misurabili, metodologie evidence-based e formazione continua.',
+  },
+];
+---
+
+<BaseLayout
+  title="Chi Siamo — Finanza & Futuro"
+  description="Finanza & Futuro: consulenti patrimoniali specializzati per dirigenti, imprenditori post-exit e famiglie HNWI. Trasparenza, relazione umana, competenza verificabile."
+  pageType="AboutPage"
+  canonicalPath="/chi-siamo"
+>
+  <Header />
+  <main class="flex-grow">
+    <!-- Hero -->
+    <section class="bg-gradient-primary text-primary-foreground py-20 lg:py-32">
+      <div class="container-wealth">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <div
+              class="inline-flex items-center px-4 py-2 rounded-full bg-primary-foreground/10 border border-primary-foreground/20 mb-8"
+            >
+              <span class="text-sm font-medium">Chi Siamo</span>
+            </div>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold mb-6 leading-tight">
+              <span class="text-accent">Consulenza patrimoniale</span> con regole chiare
+              <br />
+              Nessuna sorpresa
+            </h1>
+            <p class="text-xl lg:text-2xl mb-4 text-accent font-medium italic">
+              Educhiamo per proteggere il tuo patrimonio
+            </p>
+            <p class="text-lg lg:text-xl mb-8 text-primary-foreground/80 leading-relaxed">
+              Siamo consulenti patrimoniali specializzati in gestione patrimoniale per dirigenti,
+              imprenditori post-exit e famiglie HNWI.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a
+                href="https://wa.me/393396005487"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-on-dark"
+              >
+                <Icon name="lucide:calendar" class="w-5 h-5" />
+                Prenota call gratuita
+              </a>
+            </div>
+          </div>
+          <div class="flex justify-center lg:justify-end">
+            <div class="relative">
+              <div
+                class="absolute -top-4 -left-4 w-72 h-72 bg-accent/20 rounded-full blur-3xl"
+                aria-hidden="true"
+              >
+              </div>
+              <div
+                class="relative z-10 w-80 h-80 lg:w-96 lg:h-96 bg-primary-foreground/95 rounded-3xl shadow-elegant flex items-center justify-center p-12"
+              >
+                <img
+                  src="/images/finanza-futuro-logo.png"
+                  alt="Logo Finanza & Futuro"
+                  class="w-full h-full object-contain"
+                  width="384"
+                  height="384"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission / Manifesto -->
+    <section class="section-padding bg-muted/30">
+      <div class="container-wealth">
+        <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl lg:text-4xl font-heading font-bold text-foreground mb-6">
+              La nostra missione
+            </h2>
+            <p class="text-xl text-muted-foreground">
+              Educhiamo per proteggere il tuo patrimonio
+            </p>
+          </div>
+          <div class="card-wealth">
+            <div class="prose max-w-none">
+              <p class="text-lg leading-relaxed text-muted-foreground mb-6">
+                Finanza &amp; Futuro nasce con un obiettivo preciso: essere un supporto affidabile
+                nelle decisioni patrimoniali delle famiglie e delle imprese, in un settore in cui
+                trasparenza e competenza non sono ancora la regola. Crediamo che la gestione
+                patrimoniale debba partire dall'educazione finanziaria del cliente — perché la
+                conoscenza è la prima forma di protezione del patrimonio.
+              </p>
+              <p class="text-lg leading-relaxed text-muted-foreground mb-6">
+                Lavoriamo con un approccio macroeconomico applicato alla costruzione di portafogli,
+                con competenze specifiche nel passaggio generazionale, nella costruzione di trust e
+                strutture fiduciarie e nella gestione delle esigenze corporate per le PMI. Ogni
+                progetto è ispirato a valori chiari: impegno, costanza, lealtà, disciplina.
+              </p>
+              <p class="text-lg leading-relaxed text-muted-foreground">
+                Ciò che ci distingue è la specificità delle competenze acquisite, rese semplici e
+                di facile applicazione. Siamo qui per creare valore, benessere e serenità.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Valori -->
+    <section class="section-padding bg-background">
+      <div class="container-wealth">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl lg:text-4xl font-heading font-bold text-foreground mb-6">
+            I nostri valori
+          </h2>
+          <p class="text-xl text-muted-foreground">
+            La differenza sta nell'approccio: umano, trasparente, competente
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          {
+            values.map((value) => (
+              <div class="card-wealth text-center">
+                <Icon name={value.icon} class="w-12 h-12 text-accent mx-auto mb-4" />
+                <h3 class="text-xl font-heading font-bold text-foreground mb-3">{value.title}</h3>
+                <p class="text-muted-foreground">{value.description}</p>
+              </div>
+            ))
+          }
+        </div>
+
+        <div class="text-center mb-16">
+          <h2 class="text-3xl lg:text-4xl font-heading font-bold text-foreground mb-6">
+            Come lavoriamo
+          </h2>
+          <p class="text-xl text-muted-foreground">
+            La differenza sta nell'approccio: umano, trasparente, competente
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-xl font-heading font-bold text-foreground mb-4">
+              ❌ Come NON lavoriamo
+            </h3>
+            <ul class="space-y-3 text-muted-foreground">
+              <li>Non promettiamo rendimenti irrealistici</li>
+              <li>Non utilizziamo strategie speculative</li>
+              <li>Non deleghiamo ad algoritmi o call center</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-xl font-heading font-bold text-foreground mb-4">✅ Come lavoriamo</h3>
+            <ul class="space-y-3 text-muted-foreground">
+              <li>Advisory fee trasparenti comunicate ex-ante</li>
+              <li>Selezione indipendente degli strumenti migliori</li>
+              <li>Approccio evidence-based e prudente</li>
+              <li>Relazione diretta con consulenti qualificati</li>
+              <li>Monitoraggio continuo e reporting dettagliato</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section-padding bg-background">
+      <div class="container-wealth text-center">
+        <h2 class="text-3xl lg:text-4xl font-heading font-bold text-foreground mb-6">
+          Vuoi conoscerci di persona?
+        </h2>
+        <p class="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+          Il primo incontro è sempre gratuito e senza impegno. Parliamo delle tue esigenze e
+          valutiamo insieme se possiamo aiutarti.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="https://wa.me/393396005487"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary"
+          >
+            <Icon name="lucide:calendar" class="w-5 h-5" />
+            Prenota incontro gratuito
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

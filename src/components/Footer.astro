@@ -1,0 +1,102 @@
+---
+import { Icon } from 'astro-icon/components';
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-gradient-primary text-primary-foreground mt-auto">
+  <div class="container-wealth py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+      <!-- Logo + descrizione -->
+      <div>
+        <div class="mb-6 bg-primary-foreground/95 inline-block p-3 rounded-lg">
+          <img
+            src="/images/finanza-futuro-logo.png"
+            alt="Finanza & Futuro"
+            class="h-12 w-auto"
+            width="120"
+            height="48"
+          />
+        </div>
+        <p class="text-primary-foreground/80 mb-4 leading-relaxed">
+          Consulenza patrimoniale per dirigenti, imprenditori post-exit e famiglie HNWI. Trasparenza
+          totale, competenza verificabile.
+        </p>
+        <p class="text-accent font-medium italic">Educhiamo per proteggere il tuo patrimonio</p>
+      </div>
+
+      <!-- Servizi & Per Chi -->
+      <div>
+        <h4 class="font-heading font-bold mb-4 text-lg">Servizi &amp; Per Chi</h4>
+        <ul class="space-y-3 text-primary-foreground/80">
+          <li><a href="/servizi" class="hover:text-accent transition-smooth">Consulenza Patrimoniale</a></li>
+          <li><a href="/servizi" class="hover:text-accent transition-smooth">Wealth Management</a></li>
+          <li><a href="/dirigenti" class="hover:text-accent transition-smooth">Dirigenti &amp; Professionisti</a></li>
+          <li><a href="/post-exit" class="hover:text-accent transition-smooth">Imprenditori Post-Exit</a></li>
+          <li><a href="/famiglie-hnwi" class="hover:text-accent transition-smooth">Famiglie HNWI</a></li>
+          <li><a href="/chi-siamo" class="hover:text-accent transition-smooth">Chi Siamo</a></li>
+        </ul>
+      </div>
+
+      <!-- Contatti -->
+      <div>
+        <h4 class="font-heading font-bold mb-4 text-lg">Contatti</h4>
+
+        <a
+          href="https://wa.me/393396005487"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-accent w-full justify-center mb-6"
+        >
+          <Icon name="lucide:calendar" class="w-4 h-4" />
+          Prenota Call
+        </a>
+
+        <div class="space-y-3 text-sm text-primary-foreground/80">
+          <div class="flex items-start gap-2">
+            <Icon name="lucide:map-pin" class="w-4 h-4 mt-0.5 flex-shrink-0" />
+            <div>
+              Via Alberto da Giussano 17<br />
+              20145 Milano
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <Icon name="lucide:phone" class="w-4 h-4 flex-shrink-0" />
+            <a href="tel:+390249876530" class="hover:text-accent transition-smooth">02 4987653</a>
+          </div>
+          <div class="flex items-center gap-2">
+            <Icon name="lucide:phone" class="w-4 h-4 flex-shrink-0" />
+            <a href="tel:+393396005487" class="hover:text-accent transition-smooth">339 6005487</a>
+          </div>
+          <div class="flex items-center gap-2">
+            <Icon name="lucide:mail" class="w-4 h-4 flex-shrink-0" />
+            <a
+              href="mailto:info@finanzafuturo.it"
+              class="hover:text-accent transition-smooth break-all"
+            >
+              info@finanzafuturo.it
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="border-t border-primary-foreground/20">
+    <div class="container-wealth py-6">
+      <div class="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
+        <div class="text-sm text-primary-foreground/60">
+          © {year} Finanza &amp; Futuro. Tutti i diritti riservati.
+        </div>
+        <div class="flex space-x-6 text-sm">
+          <a href="/privacy" class="text-primary-foreground/60 hover:text-accent transition-smooth"
+            >Privacy Policy</a
+          >
+          <a href="/cookie" class="text-primary-foreground/60 hover:text-accent transition-smooth"
+            >Cookie Policy</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

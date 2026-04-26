@@ -1,0 +1,110 @@
+---
+import { Icon } from 'astro-icon/components';
+
+const steps = [
+  {
+    icon: 'lucide:search',
+    number: '01',
+    title: 'Valutazione',
+    description: 'Audit completo della tua situazione patrimoniale attuale',
+    details: [
+      'Analisi costi attuali e trasparenza future',
+      'Mappatura rischi e coperture',
+      'Identificazione opportunità di ottimizzazione',
+    ],
+  },
+  {
+    icon: 'lucide:file-text',
+    number: '02',
+    title: 'Piano',
+    description: 'Investment Policy Statement personalizzato e roadmap implementativa',
+    details: [
+      'Obiettivi SMART e timeline realistiche',
+      'Asset allocation strategica',
+      'Coordinate fiscali e successorie',
+    ],
+  },
+  {
+    icon: 'lucide:bar-chart',
+    number: '03',
+    title: 'Monitoraggio',
+    description: 'Reporting periodico e adeguamenti pro-attivi',
+    details: [
+      'Dashboard KPI one-page',
+      'Review periodico delle performance',
+      'Aggiornamenti normativi e opportunità',
+    ],
+  },
+];
+---
+
+<section class="section-padding bg-background">
+  <div class="container-wealth">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl lg:text-4xl font-heading font-bold mb-6 heading-wealth">
+        Il nostro metodo: semplice, trasparente, efficace
+      </h2>
+      <p class="text-xl text-muted-foreground max-w-2xl mx-auto">
+        Un processo strutturato che mette i tuoi obiettivi al centro con un focus chiaro e condiviso.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+      {
+        steps.map((step, index) => (
+          <div class="relative">
+            {index < steps.length - 1 && (
+              <div
+                class="hidden lg:block absolute top-10 left-full w-full h-0.5 bg-accent/30 z-0 transform translate-x-6"
+                aria-hidden="true"
+              />
+            )}
+            <div class="relative z-10 text-center lg:text-left">
+              <div class="flex items-center justify-center lg:justify-start mb-6">
+                <div class="flex items-center justify-center w-20 h-20 rounded-full accent-gradient shadow-accent">
+                  <Icon name={step.icon} class="w-10 h-10 text-accent-foreground" />
+                </div>
+                <div class="ml-4 lg:ml-6">
+                  <div class="text-4xl font-heading font-bold text-accent/30">{step.number}</div>
+                </div>
+              </div>
+
+              <div class="space-y-4">
+                <h3 class="text-2xl font-heading font-bold">{step.title}</h3>
+                <p class="text-wealth">{step.description}</p>
+                <ul class="space-y-2">
+                  {step.details.map((detail) => (
+                    <li class="flex items-start space-x-3">
+                      <div class="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0" />
+                      <span class="text-sm text-muted-foreground">{detail}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="mt-16 text-center">
+      <div class="card-accent max-w-2xl mx-auto">
+        <h3 class="text-xl font-heading font-bold mb-4">Pronti per iniziare?</h3>
+        <p class="text-muted-foreground mb-6">
+          La prima valutazione include sempre una mappa del profilo del rischio e degli obiettivi.
+          30 minuti per capire come lavoriamo con regole chiare.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="https://wa.me/393396005487"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary"
+          >
+            Prenota la tua valutazione gratuita
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

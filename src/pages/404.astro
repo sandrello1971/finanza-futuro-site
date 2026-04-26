@@ -1,0 +1,39 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import { Icon } from 'astro-icon/components';
+---
+
+<BaseLayout
+  title="Pagina non trovata"
+  description="La pagina che cerchi non esiste o è stata spostata."
+  noIndex={true}
+  canonicalPath="/404"
+>
+  <Header />
+  <main class="flex-grow flex items-center justify-center py-20">
+    <div class="container-wealth text-center">
+      <div class="max-w-2xl mx-auto">
+        <div class="text-8xl lg:text-9xl font-heading font-bold text-accent mb-6">404</div>
+        <h1 class="text-3xl lg:text-4xl font-heading font-bold text-foreground mb-6">
+          Pagina non trovata
+        </h1>
+        <p class="text-xl text-muted-foreground mb-10">
+          La pagina che cerchi non esiste o è stata spostata. Torna alla home o esplora i nostri
+          servizi.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/" class="btn-primary">
+            <Icon name="lucide:arrow-right" class="w-5 h-5 rotate-180" />
+            Torna alla home
+          </a>
+          <a href="/servizi" class="btn-outline">
+            Esplora i servizi
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,318 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import { Icon } from 'astro-icon/components';
+
+const wealthChallenges = [
+  'Gestione multi-generazionale del patrimonio',
+  'Ottimizzazione fiscale complessa e strutturata',
+  'Protezione da rischi legali e reputazionali',
+  'Educazione finanziaria delle nuove generazioni',
+  'Governance familiare e prevenzione conflitti',
+];
+
+const services = [
+  {
+    icon: 'lucide:crown',
+    title: 'Family Office Services',
+    description:
+      'Servizi completi di family office per famiglie con patrimoni significativi: gestione, amministrazione e consulenza strategica.',
+  },
+  {
+    icon: 'lucide:shield',
+    title: 'Wealth Protection',
+    description:
+      'Strutture di protezione patrimoniale avanzate per salvaguardare il patrimonio da rischi legali, fiscali e familiari.',
+  },
+  {
+    icon: 'lucide:users-2',
+    title: 'Next Generation Planning',
+    description:
+      'Programmi di educazione finanziaria e pianificazione successoria per preparare le nuove generazioni.',
+  },
+  {
+    icon: 'lucide:landmark',
+    title: 'Philanthropic Advisory',
+    description:
+      'Consulenza per attività filantropiche, fondazioni private e strategie di impatto sociale.',
+  },
+];
+---
+
+<BaseLayout
+  title="Family Office e gestione patrimoniale per Famiglie HNWI"
+  description="Family office, wealth protection, governance familiare multi-generazionale per famiglie con patrimoni ≥€3M. Next-generation planning, philanthropic advisory, riservatezza totale."
+  pageType="Service"
+  canonicalPath="/famiglie-hnwi"
+>
+  <Header />
+  <main class="flex-grow">
+    <!-- Hero -->
+    <section class="bg-gradient-primary text-primary-foreground py-20 lg:py-32">
+      <div class="container-wealth">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <div
+              class="inline-flex items-center px-4 py-2 rounded-full bg-primary-foreground/10 border border-primary-foreground/20 mb-8"
+            >
+              <span class="text-sm font-medium">Per Famiglie HNWI</span>
+            </div>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold mb-6 leading-tight">
+              Family Office e
+              <span class="text-accent">gestione patrimoniale</span>
+              per famiglie HNWI
+            </h1>
+            <p class="text-xl lg:text-2xl mb-8 text-primary-foreground/80 leading-relaxed">
+              Soluzioni integrate per famiglie con patrimoni complessi che richiedono governance
+              sofisticata e pianificazione multi-generazionale.
+            </p>
+            <a
+              href="https://wa.me/393396005487"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-on-dark"
+            >
+              <Icon name="lucide:calendar" class="w-5 h-5" />
+              Consulenza riservata famiglia
+            </a>
+          </div>
+          <div class="flex justify-center">
+            <div class="relative">
+              <div
+                class="absolute -top-4 -left-4 w-72 h-72 bg-accent/20 rounded-full blur-3xl"
+                aria-hidden="true"
+              >
+              </div>
+              <div
+                class="relative z-10 w-80 h-80 bg-primary-foreground/10 rounded-2xl flex items-center justify-center border border-primary-foreground/20"
+              >
+                <Icon name="lucide:crown" class="w-32 h-32 text-primary-foreground/60" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="py-16 bg-background border-b border-border">
+      <div class="container-wealth">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div>
+            <div class="text-4xl font-heading font-bold text-accent mb-2">€2B+</div>
+            <p class="text-muted-foreground">Patrimoni familiari gestiti</p>
+          </div>
+          <div>
+            <div class="text-4xl font-heading font-bold text-accent mb-2">50+</div>
+            <p class="text-muted-foreground">Famiglie HNWI assistite</p>
+          </div>
+          <div>
+            <div class="text-4xl font-heading font-bold text-accent mb-2">3</div>
+            <p class="text-muted-foreground">Generazioni medie seguite</p>
+          </div>
+          <div>
+            <div class="text-4xl font-heading font-bold text-accent mb-2">15+</div>
+            <p class="text-muted-foreground">Anni di esperienza HNWI</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Definition -->
+    <section class="section-padding bg-muted/30">
+      <div class="container-wealth">
+        <div class="max-w-4xl mx-auto text-center">
+          <h2 class="text-3xl lg:text-4xl font-heading font-bold text-foreground mb-8">
+            Cosa significa essere una famiglia HNWI?
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+            <div class="card-accent">
+              <h3 class="text-xl font-heading font-bold text-foreground mb-4">
+                High Net Worth Families
+              </h3>
+              <p class="text-muted-foreground mb-4">Patrimoni da €1M a €30M con esigenze di:</p>
+              <ul class="space-y-2 text-muted-foreground">
+                <li class="flex items-center">
+                  <Icon name="lucide:check-circle" class="w-4 h-4 text-accent mr-2" />Diversificazione
+                  avanzata
+                </li>
+                <li class="flex items-center">
+                  <Icon name="lucide:check-circle" class="w-4 h-4 text-accent mr-2" />Tax planning
+                  strutturato
+                </li>
+                <li class="flex items-center">
+                  <Icon name="lucide:check-circle" class="w-4 h-4 text-accent mr-2" />Protezione
+                  patrimoniale
+                </li>
+              </ul>
+            </div>
+            <div class="card-accent">
+              <h3 class="text-xl font-heading font-bold text-foreground mb-4">
+                Ultra High Net Worth
+              </h3>
+              <p class="text-muted-foreground mb-4">Patrimoni oltre €30M con necessità di:</p>
+              <ul class="space-y-2 text-muted-foreground">
+                <li class="flex items-center">
+                  <Icon name="lucide:check-circle" class="w-4 h-4 text-accent mr-2" />Family office
+                  dedicato
+                </li>
+                <li class="flex items-center">
+                  <Icon name="lucide:check-circle" class="w-4 h-4 text-accent mr-2" />Governance
+                  familiare
+                </li>
+                <li class="flex items-center">
+                  <Icon name="lucide:check-circle" class="w-4 h-4 text-accent mr-2" />Pianificazione
+                  dinastica
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Challenges -->
+    <section class="section-padding bg-background">
+      <div class="container-wealth">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl lg:text-4xl font-heading font-bold text-foreground mb-6">
+            Le sfide delle famiglie con grandi patrimoni
+          </h2>
+          <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
+            Maggiore è il patrimonio, più complesse diventano le esigenze di gestione e protezione
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {
+            wealthChallenges.map((challenge) => (
+              <div class="card-wealth">
+                <div class="flex items-start space-x-4">
+                  <Icon
+                    name="lucide:check-circle"
+                    class="w-6 h-6 text-accent flex-shrink-0 mt-1"
+                  />
+                  <p class="text-foreground font-medium">{challenge}</p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section-padding bg-muted/30">
+      <div class="container-wealth">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl lg:text-4xl font-heading font-bold text-foreground mb-6">
+            I nostri servizi per famiglie HNWI
+          </h2>
+          <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
+            Soluzioni integrate che vanno oltre la gestione patrimoniale tradizionale
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {
+            services.map((service) => (
+              <div class="card-wealth">
+                <div class="flex items-start space-x-6">
+                  <div class="inline-flex items-center justify-center w-12 h-12 bg-accent/10 rounded-full flex-shrink-0">
+                    <Icon name={service.icon} class="w-6 h-6 text-accent" />
+                  </div>
+                  <div>
+                    <h3 class="text-xl font-heading font-bold text-foreground mb-3">
+                      {service.title}
+                    </h3>
+                    <p class="text-muted-foreground leading-relaxed">{service.description}</p>
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Family Governance -->
+    <section class="section-padding bg-background">
+      <div class="container-wealth">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 class="text-3xl lg:text-4xl font-heading font-bold text-foreground mb-6">
+              Family Governance: la chiave del successo multi-generazionale
+            </h2>
+            <p class="text-xl text-muted-foreground mb-8">
+              Il 70% dei patrimoni familiari si disperde entro la seconda generazione. La governance
+              familiare è l'antidoto a questa statistica.
+            </p>
+            <div class="space-y-4">
+              <div class="flex items-center space-x-4">
+                <Icon name="lucide:check-circle" class="w-6 h-6 text-accent flex-shrink-0" />
+                <span class="text-foreground font-medium"
+                  >Family Constitution e Mission Statement</span
+                >
+              </div>
+              <div class="flex items-center space-x-4">
+                <Icon name="lucide:check-circle" class="w-6 h-6 text-accent flex-shrink-0" />
+                <span class="text-foreground font-medium"
+                  >Family Council e strutture decisionali</span
+                >
+              </div>
+              <div class="flex items-center space-x-4">
+                <Icon name="lucide:check-circle" class="w-6 h-6 text-accent flex-shrink-0" />
+                <span class="text-foreground font-medium"
+                  >Protocolli di comunicazione e conflitto</span
+                >
+              </div>
+              <div class="flex items-center space-x-4">
+                <Icon name="lucide:check-circle" class="w-6 h-6 text-accent flex-shrink-0" />
+                <span class="text-foreground font-medium"
+                  >Education programs per next generation</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="flex justify-center">
+            <div class="relative">
+              <div
+                class="absolute -top-4 -left-4 w-72 h-72 bg-accent/10 rounded-full blur-3xl"
+                aria-hidden="true"
+              >
+              </div>
+              <div
+                class="relative z-10 w-80 h-80 bg-muted/30 rounded-2xl flex items-center justify-center border border-border"
+              >
+                <Icon name="lucide:users-2" class="w-32 h-32 text-muted-foreground/60" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section-padding bg-muted/30">
+      <div class="container-wealth text-center">
+        <h2 class="text-3xl lg:text-4xl font-heading font-bold text-foreground mb-6">
+          La tua famiglia ha un patrimonio significativo?
+        </h2>
+        <p class="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+          Discutiamo in completa riservatezza delle esigenze specifiche della tua famiglia
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="https://wa.me/393396005487"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary"
+          >
+            <Icon name="lucide:calendar" class="w-5 h-5" />
+            Consulenza riservata famiglia
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,23 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Hero from '@/components/Hero.astro';
+import TargetSegments from '@/components/TargetSegments.astro';
+import Method from '@/components/Method.astro';
+import Footer from '@/components/Footer.astro';
+---
+
+<BaseLayout
+  title="Finanza & Futuro — Educhiamo per proteggere il tuo patrimonio"
+  description="Consulenza patrimoniale per dirigenti, imprenditori post-exit e famiglie HNWI. Advisory 100% umano, regole chiare, trasparenza totale. Sede a Milano."
+  pageType="WebSite"
+  canonicalPath="/"
+>
+  <Header />
+  <main class="flex-grow">
+    <Hero />
+    <TargetSegments />
+    <Method />
+  </main>
+  <Footer />
+</BaseLayout>

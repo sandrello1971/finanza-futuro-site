@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* === Finanza & Futuro Design Tokens === */
+
+@layer base {
+  :root {
+    /* Colori brand — derivati direttamente dal logo Finanza & Futuro */
+    --background: 41 22% 97%;
+    --foreground: 204 40% 34%;
+
+    --card: 41 22% 97%;
+    --card-foreground: 204 40% 34%;
+
+    --popover: 41 22% 97%;
+    --popover-foreground: 204 40% 34%;
+
+    --primary: 204 40% 34%; /* Blu petrolio del logo #335b78 */
+    --primary-foreground: 41 22% 97%;
+
+    --secondary: 200 15% 41%;
+    --secondary-foreground: 41 22% 97%;
+
+    --muted: 41 15% 92%;
+    --muted-foreground: 200 15% 41%;
+
+    --accent: 22 85% 61%; /* Arancione del logo #f18445 */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 41 22% 97%;
+
+    --border: 200 20% 85%;
+    --input: 200 20% 90%;
+    --ring: 22 85% 61%;
+
+    --radius: 0.75rem;
+
+    /* Gradienti */
+    --gradient-primary: linear-gradient(135deg, hsl(204 40% 34%), hsl(204 35% 28%));
+    --gradient-accent: linear-gradient(135deg, hsl(22 85% 61%), hsl(22 80% 55%));
+    --gradient-subtle: linear-gradient(180deg, hsl(var(--background)), hsl(41 15% 95%));
+
+    /* Ombre */
+    --shadow-elegant: 0 20px 40px -10px hsl(var(--primary) / 0.15);
+    --shadow-soft: 0 4px 20px hsl(var(--primary) / 0.08);
+    --shadow-accent: 0 8px 25px hsl(var(--accent) / 0.25);
+
+    /* Transizioni */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
+  }
+}
+
+@layer components {
+  .hero-gradient {
+    background: var(--gradient-primary);
+  }
+  .accent-gradient {
+    background: var(--gradient-accent);
+  }
+  .subtle-gradient {
+    background: var(--gradient-subtle);
+  }
+
+  .shadow-elegant {
+    box-shadow: var(--shadow-elegant);
+  }
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+  .shadow-accent {
+    box-shadow: var(--shadow-accent);
+  }
+
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+
+  .text-wealth {
+    @apply text-lg leading-relaxed text-muted-foreground;
+  }
+
+  .heading-wealth {
+    @apply font-heading font-bold text-foreground;
+  }
+
+  /* Card patterns */
+  .card-wealth {
+    @apply bg-card border border-border rounded-lg p-6 shadow-soft transition-smooth hover:shadow-elegant;
+  }
+  .card-accent {
+    @apply bg-gradient-to-br from-accent/5 to-accent/10 border border-accent/20 rounded-lg p-6 shadow-soft;
+  }
+
+  /* Pulsanti */
+  .btn-base {
+    @apply inline-flex items-center justify-center gap-2 font-medium tracking-wide rounded-lg transition-smooth shadow-soft hover:shadow-elegant focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none;
+  }
+  .btn-primary {
+    @apply btn-base bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3;
+  }
+  .btn-accent {
+    @apply btn-base bg-accent text-accent-foreground hover:bg-accent/90 px-6 py-3;
+  }
+  .btn-on-dark {
+    @apply btn-base bg-primary-foreground text-primary hover:bg-primary-foreground/90 px-8 py-4;
+  }
+  .btn-outline {
+    @apply btn-base border border-primary/20 bg-transparent text-foreground hover:bg-muted px-6 py-3;
+  }
+  .btn-ghost {
+    @apply btn-base bg-transparent shadow-none hover:bg-muted px-4 py-2;
+  }
+
+  /* Sezioni */
+  .section-padding {
+    @apply py-20;
+  }
+  .container-wealth {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}

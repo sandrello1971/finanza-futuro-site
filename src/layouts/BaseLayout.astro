@@ -1,0 +1,141 @@
+---
+import '@/styles/global.css';
+
+export interface Props {
+  title: string;
+  description: string;
+  canonicalPath?: string;
+  ogImage?: string;
+  pageType?: 'WebSite' | 'WebPage' | 'AboutPage' | 'Service';
+  noIndex?: boolean;
+}
+
+const {
+  title,
+  description,
+  canonicalPath = Astro.url.pathname,
+  ogImage = '/images/finanza-futuro-logo.png',
+  pageType = 'WebPage',
+  noIndex = false,
+} = Astro.props;
+
+const SITE_URL = 'https://finanzafuturo.it';
+const SITE_NAME = 'Finanza & Futuro';
+const fullTitle = title.includes(SITE_NAME) ? title : `${title} | ${SITE_NAME}`;
+const canonicalUrl = new URL(canonicalPath, SITE_URL).toString();
+const ogImageUrl = new URL(ogImage, SITE_URL).toString();
+
+const organizationLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FinancialService',
+  name: SITE_NAME,
+  alternateName: 'Finanza e Futuro',
+  url: SITE_URL,
+  logo: `${SITE_URL}/images/finanza-futuro-logo.png`,
+  image: `${SITE_URL}/images/finanza-futuro-logo.png`,
+  description:
+    "Consulenza patrimoniale per dirigenti, imprenditori post-exit e famiglie HNWI. Educhiamo per proteggere il tuo patrimonio: trasparenza totale, advisory umano, regole chiare.",
+  slogan: 'Educhiamo per proteggere il tuo patrimonio',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Via Alberto da Giussano 17',
+    addressLocality: 'Milano',
+    postalCode: '20145',
+    addressRegion: 'MI',
+    addressCountry: 'IT',
+  },
+  contactPoint: [
+    {
+      '@type': 'ContactPoint',
+      telephone: '+39-02-4987653',
+      contactType: 'customer service',
+      areaServed: 'IT',
+      availableLanguage: ['Italian'],
+    },
+    {
+      '@type': 'ContactPoint',
+      telephone: '+39-339-6005487',
+      contactType: 'sales',
+      areaServed: 'IT',
+      availableLanguage: ['Italian'],
+    },
+  ],
+  email: 'info@finanzafuturo.it',
+  areaServed: { '@type': 'Country', name: 'Italy' },
+  serviceType: [
+    'Consulenza patrimoniale',
+    'Wealth management',
+    'Tax planning',
+    'Estate planning',
+    'Family office',
+    'Wealth protection',
+    'Advisory post-exit',
+  ],
+};
+
+const webPageLd = {
+  '@context': 'https://schema.org',
+  '@type': pageType,
+  name: fullTitle,
+  description,
+  url: canonicalUrl,
+  inLanguage: 'it-IT',
+  isPartOf: {
+    '@type': 'WebSite',
+    name: SITE_NAME,
+    url: SITE_URL,
+  },
+};
+---
+
+<!doctype html>
+<html lang="it-IT">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <link rel="icon" type="image/png" href="/images/finanza-futuro-logo.png" />
+    <link rel="apple-touch-icon" href="/images/finanza-futuro-logo.png" />
+
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta
+      name="keywords"
+      content="consulenza patrimoniale, wealth management, advisory indipendente, post-exit, family office, governance familiare, dirigenti, HNWI, tax planning, estate planning, Milano"
+    />
+    <meta name="author" content={SITE_NAME} />
+    <link rel="canonical" href={canonicalUrl} />
+    {noIndex && <meta name="robots" content="noindex,nofollow" />}
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:locale" content="it_IT" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageUrl} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalUrl} />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <!-- Theme -->
+    <meta name="theme-color" content="#335b78" />
+
+    <!-- Preconnect ai font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- JSON-LD strutturati -->
+    <script type="application/ld+json" set:html={JSON.stringify(organizationLd)} />
+    <script type="application/ld+json" set:html={JSON.stringify(webPageLd)} />
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <slot />
+  </body>
+</html>

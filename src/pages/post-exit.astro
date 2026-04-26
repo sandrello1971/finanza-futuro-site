@@ -1,0 +1,258 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import { Icon } from 'astro-icon/components';
+
+const exitChallenges = [
+  'Gestione di liquidità improvvisa e massiccia',
+  'Diversificazione da concentrazione azionaria',
+  'Ottimizzazione fiscale della cessione',
+  'Reinvestimento strategico del capitale',
+  'Protezione patrimoniale e successoria',
+];
+
+const services = [
+  {
+    icon: 'lucide:banknote',
+    title: 'Gestione Liquidità Post-Exit',
+    description:
+      'Strategie immediate per gestire i flussi di cassa e ottimizzare la liquidità derivante dalla vendita.',
+  },
+  {
+    icon: 'lucide:trending-down',
+    title: 'Diversificazione Strategica',
+    description:
+      'Passaggio da concentrazione azionaria a portafoglio diversificato con asset allocation ottimale.',
+  },
+  {
+    icon: 'lucide:shield',
+    title: 'Tax Planning Avanzato',
+    description:
+      "Strutture legali e fiscali per minimizzare l'impatto delle imposte sulla cessione d'azienda.",
+  },
+  {
+    icon: 'lucide:zap',
+    title: 'Nuovo Lifestyle Planning',
+    description:
+      'Pianificazione finanziaria per sostenere il nuovo stile di vita post-imprenditoriale.',
+  },
+];
+---
+
+<BaseLayout
+  title="Consulenza Post-Exit per Imprenditori"
+  description="Gestione patrimoniale per imprenditori dopo la vendita dell'azienda: liquidità €1,5M-€5M, diversificazione, tax planning e nuovo lifestyle. Metodo strutturato in 90 giorni."
+  pageType="Service"
+  canonicalPath="/post-exit"
+>
+  <Header />
+  <main class="flex-grow">
+    <!-- Hero -->
+    <section class="bg-gradient-primary text-primary-foreground py-20 lg:py-32">
+      <div class="container-wealth">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <div
+              class="inline-flex items-center px-4 py-2 rounded-full bg-primary-foreground/10 border border-primary-foreground/20 mb-8"
+            >
+              <span class="text-sm font-medium">Per Imprenditori Post-Exit</span>
+            </div>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold mb-6 leading-tight">
+              Gestione patrimoniale
+              <span class="text-accent">post-exit</span>
+              <br />
+              Il nuovo capitolo inizia qui
+            </h1>
+            <p class="text-xl lg:text-2xl mb-8 text-primary-foreground/80 leading-relaxed">
+              Hai venduto la tua azienda? Ti accompagniamo nella gestione strategica della liquidità
+              e nella costruzione del tuo nuovo futuro patrimoniale.
+            </p>
+            <a
+              href="https://wa.me/393396005487"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-on-dark"
+            >
+              <Icon name="lucide:calendar" class="w-5 h-5" />
+              Consulenza post-exit gratuita
+            </a>
+          </div>
+          <div class="flex justify-center">
+            <div class="relative">
+              <div
+                class="absolute -top-4 -left-4 w-72 h-72 bg-accent/20 rounded-full blur-3xl"
+                aria-hidden="true"
+              >
+              </div>
+              <div
+                class="relative z-10 w-80 h-80 bg-primary-foreground/10 rounded-2xl flex items-center justify-center border border-primary-foreground/20"
+              >
+                <Icon name="lucide:zap" class="w-32 h-32 text-primary-foreground/60" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="py-16 bg-background border-b border-border">
+      <div class="container-wealth">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+          <div>
+            <div class="text-4xl font-heading font-bold text-accent mb-2">€50M+</div>
+            <p class="text-muted-foreground">Liquidità post-exit gestita</p>
+          </div>
+          <div>
+            <div class="text-4xl font-heading font-bold text-accent mb-2">25+</div>
+            <p class="text-muted-foreground">Exit di successo supportate</p>
+          </div>
+          <div>
+            <div class="text-4xl font-heading font-bold text-accent mb-2">18 mesi</div>
+            <p class="text-muted-foreground">Tempo medio di diversificazione</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Challenges -->
+    <section class="section-padding bg-muted/30">
+      <div class="container-wealth">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl lg:text-4xl font-heading font-bold text-foreground mb-6">
+            Le sfide uniche del post-exit
+          </h2>
+          <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
+            Dopo anni di focus imprenditoriale, gestire patrimoni liquidi richiede competenze e
+            strategie diverse
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {
+            exitChallenges.map((challenge) => (
+              <div class="card-wealth">
+                <div class="flex items-start space-x-4">
+                  <Icon
+                    name="lucide:check-circle"
+                    class="w-6 h-6 text-accent flex-shrink-0 mt-1"
+                  />
+                  <p class="text-foreground font-medium">{challenge}</p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section-padding bg-background">
+      <div class="container-wealth">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl lg:text-4xl font-heading font-bold text-foreground mb-6">
+            Il nostro approccio post-exit
+          </h2>
+          <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
+            Metodo strutturato per trasformare il successo imprenditoriale in libertà finanziaria
+            duratura
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {
+            services.map((service) => (
+              <div class="card-wealth">
+                <div class="flex items-start space-x-6">
+                  <div class="inline-flex items-center justify-center w-12 h-12 bg-accent/10 rounded-full flex-shrink-0">
+                    <Icon name={service.icon} class="w-6 h-6 text-accent" />
+                  </div>
+                  <div>
+                    <h3 class="text-xl font-heading font-bold text-foreground mb-3">
+                      {service.title}
+                    </h3>
+                    <p class="text-muted-foreground leading-relaxed">{service.description}</p>
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Process 90 giorni -->
+    <section class="section-padding bg-muted/30">
+      <div class="container-wealth">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl lg:text-4xl font-heading font-bold text-foreground mb-6">
+            Il processo in 90 giorni
+          </h2>
+          <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
+            Dalla liquidità concentrata al portafoglio diversificato in 3 mesi
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="text-center">
+            <div
+              class="inline-flex items-center justify-center w-16 h-16 bg-accent rounded-full text-accent-foreground font-bold text-xl mb-6"
+            >
+              1
+            </div>
+            <h3 class="text-xl font-heading font-bold text-foreground mb-4">Analisi e Pianificazione</h3>
+            <p class="text-muted-foreground">
+              Valutazione completa della situazione patrimoniale e definizione degli obiettivi
+              post-exit
+            </p>
+          </div>
+          <div class="text-center">
+            <div
+              class="inline-flex items-center justify-center w-16 h-16 bg-accent rounded-full text-accent-foreground font-bold text-xl mb-6"
+            >
+              2
+            </div>
+            <h3 class="text-xl font-heading font-bold text-foreground mb-4">Strutturazione</h3>
+            <p class="text-muted-foreground">
+              Implementazione delle strutture fiscali e degli strumenti di investimento ottimali
+            </p>
+          </div>
+          <div class="text-center">
+            <div
+              class="inline-flex items-center justify-center w-16 h-16 bg-accent rounded-full text-accent-foreground font-bold text-xl mb-6"
+            >
+              3
+            </div>
+            <h3 class="text-xl font-heading font-bold text-foreground mb-4">Diversificazione</h3>
+            <p class="text-muted-foreground">
+              Allocazione graduale del capitale su asset class diverse con monitoraggio continuo
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section-padding bg-background">
+      <div class="container-wealth text-center">
+        <h2 class="text-3xl lg:text-4xl font-heading font-bold text-foreground mb-6">
+          Hai appena concluso una exit di successo?
+        </h2>
+        <p class="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+          Non lasciare che la mancanza di pianificazione vanifichi anni di duro lavoro
+          imprenditoriale
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="https://wa.me/393396005487"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary"
+          >
+            <Icon name="lucide:calendar" class="w-5 h-5" />
+            Consulenza post-exit gratuita
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
