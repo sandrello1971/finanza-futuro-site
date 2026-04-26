@@ -1,6 +1,6 @@
 # Finanza & Futuro
 
-> Consulenza patrimoniale per dirigenti, imprenditori post-exit e famiglie HNWI. Educhiamo per proteggere il tuo patrimonio: trasparenza totale, advisory 100% umano, regole chiare e verificabili.
+> Consulenza patrimoniale per dirigenti e imprenditori post-exit. Educhiamo per proteggere il tuo patrimonio: trasparenza totale, advisory 100% umano, regole chiare e verificabili.
 
 ## Chi siamo
 
@@ -14,7 +14,6 @@ Sede: Via Alberto da Giussano 17, 20145 Milano.
 
 - **Dirigenti & Professionisti** (€300K – €1,5M di patrimonio): gestione di RSU, stock option, bonus variabili, pianificazione fiscale e diversificazione oltre l'azienda. Pagina: /dirigenti
 - **Imprenditori Post-Exit** (€1,5M – €5M da liquidità): gestione della liquidità improvvisa post-vendita, diversificazione strategica, tax planning e nuovo lifestyle planning con un metodo strutturato in 90 giorni. Pagina: /post-exit
-- **Famiglie HNWI** (≥ €3M patrimonio familiare): family office, wealth protection, governance familiare multi-generazionale, next-generation planning, philanthropic advisory. Pagina: /famiglie-hnwi
 
 ## Servizi principali
 
@@ -43,11 +42,19 @@ Pagina dedicata: /servizi
 - Approccio evidence-based, mai speculativo
 - Relazione diretta con consulenti qualificati, mai algoritmi o call center
 
+## Risorse e video
+
+Pubblichiamo periodicamente video di educazione finanziaria su /risorse, con trascrizione completa di ciascun episodio per essere indicizzabili e citabili dagli LLM. Feed RSS: /risorse/rss.xml. Canale YouTube: [TODO link canale]
+
 ## Contatti
 
-- Telefono: 02 4987653 / 339 6005487
-- WhatsApp: https://wa.me/393396005487
+Canale primario: form di contatto su /contatti (richiesta valutazione gratuita di 30 minuti, risposta entro 24 ore lavorative).
+
+Canali secondari:
+
 - Email: info@finanzafuturo.it
+- Telefono: 02 4987653 / 339 6005487
+- WhatsApp (alternativa veloce): https://wa.me/393396005487
 - Indirizzo: Via Alberto da Giussano 17, 20145 Milano
 
 ## Pagine principali
@@ -55,6 +62,5 @@ Pagina dedicata: /servizi
 - Home: /
 - Per Dirigenti & Professionisti: /dirigenti
 - Per Imprenditori Post-Exit: /post-exit
-- Per Famiglie HNWI: /famiglie-hnwi
 - Servizi: /servizi
 - Chi Siamo: /chi-siamo

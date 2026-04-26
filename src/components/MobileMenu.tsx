@@ -66,18 +66,24 @@ export default function MobileMenu() {
               >
                 Post-Exit
               </a>
-              <a
-                href="/famiglie-hnwi"
-                className="block px-6 py-2 text-sm text-muted-foreground hover:text-foreground"
-              >
-                Famiglie HNWI
-              </a>
             </div>
             <a
               href="/servizi"
               className="block px-3 py-2 text-base text-muted-foreground hover:text-foreground"
             >
               Servizi
+            </a>
+            <a
+              href="/risorse"
+              className="block px-3 py-2 text-base text-muted-foreground hover:text-foreground"
+            >
+              Risorse
+            </a>
+            <a
+              href="/contatti"
+              className="block px-3 py-2 text-base text-muted-foreground hover:text-foreground"
+            >
+              Contatti
             </a>
             <a
               href="/chi-siamo"

@@ -54,3 +54,4 @@ User-agent: YouBot
 Allow: /
 
 Sitemap: https://finanzafuturo.it/sitemap-index.xml
+Sitemap: https://finanzafuturo.it/risorse/rss.xml

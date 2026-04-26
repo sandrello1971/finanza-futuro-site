@@ -20,15 +20,6 @@ const segments = [
     href: '/post-exit',
     color: 'from-primary/10 to-primary/5',
   },
-  {
-    icon: 'lucide:users',
-    title: 'Famiglie HNWI',
-    subtitle: '≥€3M patrimonio familiare',
-    pain: 'Governance familiare, coordinamento consulenti?',
-    benefit: 'Family charter, cabina di regia, massima discrezione',
-    href: '/famiglie-hnwi',
-    color: 'from-secondary/20 to-secondary/10',
-  },
 ];
 ---
 
@@ -36,15 +27,15 @@ const segments = [
   <div class="container-wealth">
     <div class="text-center mb-16">
       <h2 class="text-3xl lg:text-4xl font-heading font-bold mb-6 heading-wealth">
-        Soluzioni su misura per ogni patrimonio
+        Due percorsi specializzati
       </h2>
       <p class="text-xl text-muted-foreground max-w-2xl mx-auto">
-        Tre approcci specializzati per dirigenti, imprenditori e famiglie patrimoniali. Chiarezza
-        sui compensi, metodo trasparente.
+        Approcci specializzati per dirigenti e imprenditori post-exit. Chiarezza sui compensi,
+        metodo trasparente.
       </p>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
       {
         segments.map((segment) => (
           <div class="group">
@@ -89,12 +80,7 @@ const segments = [
     <div class="text-center mt-12">
       <p class="text-muted-foreground">
         Non sei sicuro quale approccio fa per te?
-        <a
-          href="https://wa.me/393396005487"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-accent font-medium hover:underline ml-1"
-        >
+        <a href="/contatti" class="text-accent font-medium hover:underline ml-1">
           Parliamone insieme
         </a>
       </p>

@@ -52,12 +52,6 @@ const isActive = (path: string) => currentPath === path || (path !== '/' && curr
               >
                 Post-Exit
               </a>
-              <a
-                href="/famiglie-hnwi"
-                class="block text-sm text-muted-foreground hover:text-foreground transition-smooth"
-              >
-                Famiglie HNWI
-              </a>
             </div>
           </div>
         </div>
@@ -67,6 +61,18 @@ const isActive = (path: string) => currentPath === path || (path !== '/' && curr
           class={`text-wealth hover:text-foreground transition-smooth ${isActive('/servizi') ? 'text-foreground font-medium' : ''}`}
         >
           Servizi
+        </a>
+        <a
+          href="/risorse"
+          class={`text-wealth hover:text-foreground transition-smooth ${isActive('/risorse') ? 'text-foreground font-medium' : ''}`}
+        >
+          Risorse
+        </a>
+        <a
+          href="/contatti"
+          class={`text-wealth hover:text-foreground transition-smooth ${isActive('/contatti') ? 'text-foreground font-medium' : ''}`}
+        >
+          Contatti
         </a>
         <a
           href="/chi-siamo"

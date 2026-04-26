@@ -1,0 +1,136 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import { Icon } from 'astro-icon/components';
+import { TARGET_META, type TargetKey } from '@/lib/target-meta';
+
+export async function getStaticPaths() {
+  const targets: TargetKey[] = ['dirigenti', 'post-exit', 'famiglie-hnwi', 'generale'];
+  return targets.map((target) => ({ params: { target } }));
+}
+
+const { target } = Astro.params;
+const targetKey = target as TargetKey;
+const meta = TARGET_META[targetKey];
+
+const all = (await getCollection('risorse'))
+  .filter((e) => e.data.target === targetKey)
+  .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime());
+---
+
+<BaseLayout
+  title={`Risorse · ${meta.label}`}
+  description={`Video di educazione finanziaria per ${meta.label}: trascrizioni complete, contenuti tecnici evidence-based.`}
+  canonicalPath={`/risorse/target/${targetKey}`}
+>
+  <Header />
+  <main class="flex-grow">
+    <section class="bg-gradient-primary text-primary-foreground py-12 lg:py-16">
+      <div class="container-wealth">
+        <a
+          href="/risorse"
+          class="text-sm text-primary-foreground/70 hover:text-primary-foreground inline-flex items-center gap-1 mb-4"
+        >
+          ← Tutte le risorse
+        </a>
+        <h1 class="text-3xl lg:text-4xl font-heading font-bold mb-4">
+          Risorse · {meta.label}
+        </h1>
+        <p class="text-lg text-primary-foreground/80 max-w-2xl">
+          Video di educazione finanziaria selezionati per questo target.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-8 bg-muted/30 border-b border-border">
+      <div class="container-wealth flex flex-wrap items-center gap-3">
+        <span class="text-sm text-muted-foreground mr-2">Filtra:</span>
+        <a
+          href="/risorse"
+          class="px-4 py-2 rounded-full bg-background border border-border text-sm hover:border-accent transition-smooth"
+        >
+          Tutti
+        </a>
+        {
+          Object.entries(TARGET_META).map(([key, m]) => {
+            const active = key === targetKey;
+            return (
+              <a
+                href={`/risorse/target/${key}`}
+                class={`px-4 py-2 rounded-full text-sm font-medium ${active ? 'bg-foreground text-background' : 'bg-background border border-border hover:border-accent transition-smooth'}`}
+              >
+                {m.label}
+              </a>
+            );
+          })
+        }
+      </div>
+    </section>
+
+    <section class="section-padding bg-background">
+      <div class="container-wealth">
+        {
+          all.length === 0 ? (
+            <p class="text-muted-foreground text-center py-16">
+              Ancora nessun video pubblicato per questo target.{' '}
+              <a href="/risorse" class="text-accent hover:underline">
+                Vedi tutte le risorse →
+              </a>
+            </p>
+          ) : (
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {all.map((entry) => {
+                const m = TARGET_META[entry.data.target];
+                const thumb =
+                  entry.data.thumbnail ??
+                  `https://img.youtube.com/vi/${entry.data.youtubeId}/maxresdefault.jpg`;
+                const slug = entry.id;
+                return (
+                  <a
+                    href={`/risorse/${slug}`}
+                    class="group card-wealth p-0 overflow-hidden flex flex-col"
+                  >
+                    <div class="relative aspect-video bg-muted overflow-hidden">
+                      <img
+                        src={thumb}
+                        alt={entry.data.title}
+                        loading="lazy"
+                        onerror={`this.onerror=null;this.src='https://img.youtube.com/vi/${entry.data.youtubeId}/hqdefault.jpg'`}
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                        <Icon
+                          name="lucide:play-circle"
+                          class="w-16 h-16 text-white/90 drop-shadow-lg"
+                        />
+                      </div>
+                      <span class="absolute bottom-2 right-2 px-2 py-1 bg-black/70 text-white text-xs rounded">
+                        {entry.data.duration}
+                      </span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                      <span
+                        class={`inline-block px-2 py-0.5 rounded text-xs font-medium mb-3 self-start ${m.classes}`}
+                      >
+                        {m.label}
+                      </span>
+                      <h2 class="font-heading font-bold text-lg mb-2 group-hover:text-accent transition-smooth">
+                        {entry.data.title}
+                      </h2>
+                      <p class="text-sm text-muted-foreground line-clamp-3 flex-grow">
+                        {entry.data.excerpt}
+                      </p>
+                    </div>
+                  </a>
+                );
+              })}
+            </div>
+          )
+        }
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,68 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+
+const lastUpdate = '26 aprile 2026';
+---
+
+<BaseLayout
+  title="Note Legali"
+  description="Note legali di Finanza & Futuro: dati societari e disclaimer informativo."
+  canonicalPath="/note-legali"
+  noIndex={false}
+>
+  <Header />
+  <main class="flex-grow">
+    <section class="bg-gradient-primary text-primary-foreground py-16 lg:py-24">
+      <div class="container-wealth">
+        <h1 class="text-4xl lg:text-5xl font-heading font-bold mb-4">Note Legali</h1>
+        <p class="text-lg text-primary-foreground/80">Ultimo aggiornamento: {lastUpdate}</p>
+      </div>
+    </section>
+
+    <section class="section-padding bg-background">
+      <div class="container-wealth">
+        <div class="max-w-3xl mx-auto space-y-6 text-foreground leading-relaxed">
+          <h2 class="text-2xl font-heading font-bold mt-2 mb-3">Dati societari</h2>
+          <p>
+            <strong>Ragione sociale:</strong> [Ragione Sociale]<br />
+            <strong>Partita IVA:</strong> [P.IVA]<br />
+            <strong>Codice Fiscale:</strong> [C.F.]<br />
+            <strong>Sede legale:</strong> [Sede Legale]<br />
+            <strong>Email:</strong> <a href="mailto:info@finanzafuturo.it" class="text-accent hover:underline">info@finanzafuturo.it</a>
+          </p>
+
+          <h2 class="text-2xl font-heading font-bold mt-10 mb-3">Disclaimer informativo</h2>
+          <p>
+            Le informazioni contenute nel presente sito hanno carattere puramente informativo e non
+            costituiscono sollecitazione al pubblico risparmio né consulenza finanziaria
+            personalizzata ai sensi dell'art. 1 c. 5-septies TUF.
+          </p>
+          <p>
+            Le opinioni, le analisi e i contenuti pubblicati sono espressione di valutazioni
+            generali e non tengono conto della situazione personale, degli obiettivi di investimento
+            e dell'orizzonte temporale del singolo lettore. Qualsiasi decisione di investimento o
+            scelta in materia patrimoniale dovrebbe essere assunta solo dopo un'analisi personalizzata
+            condotta nell'ambito di un rapporto di consulenza formalizzato.
+          </p>
+
+          <h2 class="text-2xl font-heading font-bold mt-10 mb-3">Proprietà intellettuale</h2>
+          <p>
+            Tutti i contenuti del sito (testi, immagini, marchi, loghi, layout) sono protetti dalle
+            normative vigenti in materia di diritto d'autore e proprietà industriale. È vietata la
+            riproduzione, anche parziale, senza esplicita autorizzazione scritta del Titolare.
+          </p>
+
+          <h2 class="text-2xl font-heading font-bold mt-10 mb-3">Foro competente</h2>
+          <p>
+            Per qualsiasi controversia relativa all'utilizzo del sito si applica la legge italiana;
+            il foro competente è quello del consumatore, ove applicabile, o, in via residuale,
+            il Foro di Milano.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

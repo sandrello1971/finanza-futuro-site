@@ -1,0 +1,35 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import { Icon } from 'astro-icon/components';
+---
+
+<BaseLayout
+  title="Grazie per averci contattato"
+  description="Conferma di ricezione della tua richiesta."
+  canonicalPath="/contatti/grazie"
+  noIndex={true}
+>
+  <Header />
+  <main class="flex-grow flex items-center">
+    <section class="container-wealth max-w-2xl mx-auto py-20 lg:py-32 text-center">
+      <div
+        class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/10 mb-6"
+      >
+        <Icon name="lucide:check-circle" class="w-8 h-8 text-accent" />
+      </div>
+      <h1 class="text-3xl lg:text-4xl font-heading font-bold mb-4">
+        Grazie per averci contattato
+      </h1>
+      <p class="text-lg text-muted-foreground mb-10 leading-relaxed">
+        Ti risponderemo entro 24 ore lavorative.
+      </p>
+      <a href="/" class="btn-primary">
+        <Icon name="lucide:arrow-right" class="w-4 h-4" />
+        Torna alla home
+      </a>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

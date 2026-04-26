@@ -1,0 +1,115 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+
+const lastUpdate = '26 aprile 2026';
+---
+
+<BaseLayout
+  title="Privacy Policy"
+  description="Privacy policy di Finanza & Futuro: trattamento dei dati personali ai sensi del Regolamento UE 2016/679 (GDPR)."
+  canonicalPath="/privacy"
+  noIndex={false}
+>
+  <Header />
+  <main class="flex-grow">
+    <section class="bg-gradient-primary text-primary-foreground py-16 lg:py-24">
+      <div class="container-wealth">
+        <h1 class="text-4xl lg:text-5xl font-heading font-bold mb-4">Privacy Policy</h1>
+        <p class="text-lg text-primary-foreground/80">Ultimo aggiornamento: {lastUpdate}</p>
+      </div>
+    </section>
+
+    <section class="section-padding bg-background">
+      <div class="container-wealth">
+        <div class="max-w-3xl mx-auto space-y-6 text-foreground leading-relaxed">
+          <p>
+            La presente informativa descrive come Finanza &amp; Futuro tratta i dati personali
+            raccolti tramite il sito <strong>finanzafuturo.it</strong>, ai sensi del Regolamento
+            (UE) 2016/679 ("GDPR") e della normativa nazionale applicabile.
+          </p>
+
+          <h2 class="text-2xl font-heading font-bold mt-10 mb-3">1. Titolare del trattamento</h2>
+          <p>
+            Il titolare del trattamento è <strong>[Ragione Sociale]</strong> &mdash; P.IVA
+            <strong>[P.IVA]</strong> &mdash; sede legale in <strong>[Indirizzo]</strong>.
+            Per qualsiasi richiesta inerente il trattamento dei dati personali è possibile scrivere
+            all'indirizzo <a href="mailto:privacy@finanzafuturo.it" class="text-accent hover:underline">privacy@finanzafuturo.it</a>.
+          </p>
+
+          <h2 class="text-2xl font-heading font-bold mt-10 mb-3">2. Tipologia di dati raccolti</h2>
+          <p>
+            Il sito raccoglie esclusivamente i dati di contatto che l'utente fornisce
+            volontariamente attraverso i canali di comunicazione resi disponibili.
+          </p>
+          <h3 class="text-xl font-heading font-semibold mt-6 mb-2">2.1 Contatto via WhatsApp</h3>
+          <p>
+            Quando l'utente avvia una conversazione tramite il pulsante WhatsApp, vengono trattati
+            il numero di telefono, l'eventuale nome utente e i contenuti del messaggio. La
+            conversazione è gestita all'interno dell'applicazione WhatsApp, soggetta alle relative
+            condizioni di servizio e privacy policy di Meta Platforms Ireland Ltd.
+          </p>
+          <h3 class="text-xl font-heading font-semibold mt-6 mb-2">2.2 Contatto via email</h3>
+          <p>
+            Quando l'utente scrive a un indirizzo email pubblicato sul sito, vengono trattati
+            l'indirizzo del mittente e il contenuto della comunicazione.
+          </p>
+
+          <h2 class="text-2xl font-heading font-bold mt-10 mb-3">3. Finalità del trattamento</h2>
+          <p>
+            I dati sono trattati esclusivamente per rispondere alle richieste dell'utente, fornire
+            informazioni sui servizi di consulenza patrimoniale, organizzare eventuali appuntamenti
+            conoscitivi e adempiere ad obblighi di legge.
+          </p>
+
+          <h2 class="text-2xl font-heading font-bold mt-10 mb-3">4. Base giuridica</h2>
+          <p>
+            La base giuridica del trattamento è l'esecuzione di misure precontrattuali su richiesta
+            dell'interessato (art. 6, par. 1, lett. b GDPR) e, dove applicabile, il legittimo
+            interesse del Titolare a riscontrare le richieste pervenute (art. 6, par. 1, lett. f GDPR).
+          </p>
+
+          <h2 class="text-2xl font-heading font-bold mt-10 mb-3">5. Periodo di conservazione</h2>
+          <p>
+            I dati di contatto sono conservati per il tempo strettamente necessario a evadere la
+            richiesta e, qualora la richiesta evolva in un rapporto contrattuale, per i termini di
+            conservazione previsti dalla normativa fiscale e civilistica applicabile (di regola
+            dieci anni). I messaggi privi di seguito vengono cancellati entro 24 mesi.
+          </p>
+
+          <h2 class="text-2xl font-heading font-bold mt-10 mb-3">6. Comunicazione e trasferimento</h2>
+          <p>
+            I dati non sono diffusi e non sono oggetto di processi decisionali automatizzati. Possono
+            essere trattati da fornitori di servizi tecnici (hosting, posta elettronica, messaggistica)
+            in qualità di responsabili del trattamento. Eventuali trasferimenti extra-UE avvengono
+            sulla base di clausole contrattuali standard approvate dalla Commissione Europea.
+          </p>
+
+          <h2 class="text-2xl font-heading font-bold mt-10 mb-3">7. Diritti dell'interessato</h2>
+          <p>
+            L'interessato può esercitare in qualsiasi momento i diritti previsti dagli articoli da
+            15 a 22 GDPR: accesso ai dati, rettifica, cancellazione, limitazione del trattamento,
+            portabilità, opposizione, nonché il diritto di non essere sottoposto a decisioni
+            automatizzate. Le richieste possono essere inviate a
+            <a href="mailto:privacy@finanzafuturo.it" class="text-accent hover:underline">privacy@finanzafuturo.it</a>.
+          </p>
+
+          <h2 class="text-2xl font-heading font-bold mt-10 mb-3">8. Reclamo all'Autorità</h2>
+          <p>
+            Qualora l'interessato ritenga che il trattamento dei propri dati avvenga in violazione
+            del GDPR, ha il diritto di proporre reclamo al Garante per la protezione dei dati
+            personali (<a href="https://www.garanteprivacy.it" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">www.garanteprivacy.it</a>).
+          </p>
+
+          <h2 class="text-2xl font-heading font-bold mt-10 mb-3">9. Modifiche</h2>
+          <p>
+            La presente informativa può essere aggiornata in qualsiasi momento. La versione vigente
+            è sempre consultabile a questa pagina; la data di ultima modifica è indicata in apertura.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

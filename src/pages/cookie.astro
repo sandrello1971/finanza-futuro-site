@@ -1,0 +1,84 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+
+const lastUpdate = '26 aprile 2026';
+---
+
+<BaseLayout
+  title="Cookie Policy"
+  description="Cookie policy di Finanza & Futuro: il sito utilizza esclusivamente cookie tecnici essenziali."
+  canonicalPath="/cookie"
+  noIndex={false}
+>
+  <Header />
+  <main class="flex-grow">
+    <section class="bg-gradient-primary text-primary-foreground py-16 lg:py-24">
+      <div class="container-wealth">
+        <h1 class="text-4xl lg:text-5xl font-heading font-bold mb-4">Cookie Policy</h1>
+        <p class="text-lg text-primary-foreground/80">Ultimo aggiornamento: {lastUpdate}</p>
+      </div>
+    </section>
+
+    <section class="section-padding bg-background">
+      <div class="container-wealth">
+        <div class="max-w-3xl mx-auto space-y-6 text-foreground leading-relaxed">
+          <p>
+            La presente informativa illustra l'utilizzo di cookie e tecnologie analoghe sul sito
+            <strong>finanzafuturo.it</strong>, in conformità al provvedimento del Garante per la
+            protezione dei dati personali del 10 giugno 2021 e alla Direttiva ePrivacy.
+          </p>
+
+          <h2 class="text-2xl font-heading font-bold mt-10 mb-3">1. Cosa sono i cookie</h2>
+          <p>
+            I cookie sono piccoli file di testo che i siti visitati inviano al browser dell'utente,
+            dove vengono memorizzati per essere ritrasmessi al sito alle visite successive. Possono
+            essere tecnici (necessari al funzionamento) oppure di profilazione (richiedono il
+            consenso).
+          </p>
+
+          <h2 class="text-2xl font-heading font-bold mt-10 mb-3">2. Cookie utilizzati da questo sito</h2>
+          <p>
+            Questo sito utilizza <strong>esclusivamente cookie tecnici essenziali</strong>, necessari
+            al corretto funzionamento delle pagine. Non sono presenti cookie di profilazione,
+            cookie pubblicitari né strumenti di analytics di terze parti. Per questo motivo non
+            viene mostrato un banner di consenso: i cookie tecnici non lo richiedono ai sensi
+            dell'art. 122 del Codice Privacy.
+          </p>
+
+          <h2 class="text-2xl font-heading font-bold mt-10 mb-3">3. Servizi tecnici di terze parti</h2>
+          <h3 class="text-xl font-heading font-semibold mt-6 mb-2">3.1 Hosting (Vercel)</h3>
+          <p>
+            Il sito è ospitato sull'infrastruttura di Vercel Inc. che, per finalità tecniche e di
+            sicurezza (load balancing, prevenzione abusi), può impostare cookie strettamente
+            necessari alla resa del servizio. Maggiori informazioni sul sito del fornitore.
+          </p>
+          <h3 class="text-xl font-heading font-semibold mt-6 mb-2">3.2 Google Fonts</h3>
+          <p>
+            Per la resa tipografica il sito carica font dal CDN di Google Fonts (Google Ireland
+            Ltd.). Il caricamento dei font non imposta cookie, ma comporta la trasmissione
+            dell'indirizzo IP del visitatore al fornitore, in qualità di dato tecnico necessario
+            all'erogazione della richiesta. Maggiori informazioni nella privacy policy di Google.
+          </p>
+
+          <h2 class="text-2xl font-heading font-bold mt-10 mb-3">4. Gestione dei cookie</h2>
+          <p>
+            L'utente può in qualsiasi momento disabilitare i cookie agendo sulle impostazioni del
+            proprio browser. Si segnala che la disabilitazione dei cookie tecnici può compromettere
+            la corretta fruizione del sito.
+          </p>
+
+          <h2 class="text-2xl font-heading font-bold mt-10 mb-3">5. Riferimenti e contatti</h2>
+          <p>
+            Per ogni richiesta relativa al trattamento dei dati è possibile scrivere a
+            <a href="mailto:privacy@finanzafuturo.it" class="text-accent hover:underline">privacy@finanzafuturo.it</a>.
+            Per approfondimenti normativi si rimanda al sito del
+            <a href="https://www.garanteprivacy.it" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">Garante per la protezione dei dati personali</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
