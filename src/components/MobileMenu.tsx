@@ -66,6 +66,12 @@ export default function MobileMenu() {
               >
                 Post-Exit
               </a>
+              <a
+                href="/corporate"
+                className="block px-6 py-2 text-sm text-muted-foreground hover:text-foreground"
+              >
+                Corporate
+              </a>
             </div>
             <a
               href="/servizi"

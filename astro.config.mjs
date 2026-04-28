@@ -56,6 +56,7 @@ export default defineConfig({
           'play-circle',
           'rss',
           'clock',
+          'building-2',
         ],
       },
     }),

@@ -1,0 +1,175 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import { Icon } from 'astro-icon/components';
+
+const services = [
+  {
+    icon: 'lucide:banknote',
+    title: 'Liquidità aziendale',
+    description: 'Gestione della cassa e capitali fermi',
+  },
+  {
+    icon: 'lucide:landmark',
+    title: 'Rapporti bancari',
+    description: 'Credito, finanziamenti, rinegoziazioni',
+  },
+  {
+    icon: 'lucide:shield',
+    title: 'Protezione patrimoniale',
+    description: 'Separazione tra beni personali e rischio impresa',
+  },
+  {
+    icon: 'lucide:users',
+    title: 'Passaggio generazionale',
+    description: 'Continuità aziendale e successione familiare',
+  },
+  {
+    icon: 'lucide:briefcase',
+    title: 'Operazioni straordinarie',
+    description: 'Vendita azienda, ingresso soci, holding, acquisizioni',
+  },
+  {
+    icon: 'lucide:trending-up',
+    title: 'Diversificazione',
+    description:
+      'Trasformare parte della ricchezza aziendale in patrimonio personale investito bene',
+  },
+];
+---
+
+<BaseLayout
+  title="Consulenza Corporate integrata per PMI e imprenditori"
+  description="Consulenza corporate per PMI e imprenditori: liquidità aziendale, rapporti bancari, protezione patrimoniale, passaggio generazionale, operazioni straordinarie e diversificazione."
+  pageType="Service"
+  canonicalPath="/corporate"
+>
+  <Header />
+  <main class="flex-grow">
+    <!-- Hero -->
+    <section class="bg-gradient-primary text-primary-foreground py-20 lg:py-32">
+      <div class="container-wealth">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <div
+              class="inline-flex items-center px-4 py-2 rounded-full bg-primary-foreground/10 border border-primary-foreground/20 mb-8"
+            >
+              <span class="text-sm font-medium">Per PMI &amp; Imprenditori</span>
+            </div>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold mb-6 leading-tight">
+              Consulenza
+              <span class="text-accent">Corporate</span>
+              integrata per PMI e imprenditori
+            </h1>
+            <p class="text-xl lg:text-2xl mb-8 text-primary-foreground/80 leading-relaxed">
+              Seguiamo le esigenze corporate occupandoci non solo del patrimonio personale
+              dell'imprenditore, ma anche delle esigenze finanziarie legate all'azienda.
+            </p>
+            <a
+              href="https://wa.me/393396005487"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-on-dark"
+            >
+              <Icon name="lucide:calendar" class="w-5 h-5" />
+              Prenota consulenza corporate gratuita
+            </a>
+          </div>
+          <div class="flex justify-center">
+            <div class="relative">
+              <div
+                class="absolute -top-4 -left-4 w-72 h-72 bg-accent/20 rounded-full blur-3xl"
+                aria-hidden="true"
+              >
+              </div>
+              <div
+                class="relative z-10 w-80 h-80 bg-primary-foreground/10 rounded-2xl flex items-center justify-center border border-primary-foreground/20"
+              >
+                <Icon name="lucide:building-2" class="w-32 h-32 text-primary-foreground/60" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section-padding bg-background">
+      <div class="container-wealth">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl lg:text-4xl font-heading font-bold text-foreground mb-6">
+            I nostri servizi corporate
+          </h2>
+          <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
+            Un approccio integrato che unisce le esigenze dell'azienda a quelle dell'imprenditore e
+            della sua famiglia
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {
+            services.map((service) => (
+              <div class="card-wealth text-center">
+                <div class="inline-flex items-center justify-center w-16 h-16 bg-accent/10 rounded-full mb-6">
+                  <Icon name={service.icon} class="w-8 h-8 text-accent" />
+                </div>
+                <h3 class="text-xl font-heading font-bold text-foreground mb-4">
+                  {service.title}
+                </h3>
+                <p class="text-muted-foreground leading-relaxed">{service.description}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Valore distintivo -->
+    <section class="section-padding bg-muted/30">
+      <div class="container-wealth">
+        <div class="max-w-4xl mx-auto text-center">
+          <div
+            class="inline-flex items-center justify-center w-16 h-16 bg-accent/10 rounded-full mb-8"
+          >
+            <Icon name="lucide:target" class="w-8 h-8 text-accent" />
+          </div>
+          <h2 class="text-3xl lg:text-4xl font-heading font-bold text-foreground mb-6">
+            Il nostro valore distintivo
+          </h2>
+          <p class="text-xl lg:text-2xl text-muted-foreground leading-relaxed">
+            Il nostro vero valore è dare una visione integrata tra
+            <span class="text-foreground font-medium">azienda</span>,
+            <span class="text-foreground font-medium">famiglia</span> e
+            <span class="text-foreground font-medium">patrimonio</span>, trasformando problemi
+            complessi in soluzioni strategiche.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section-padding bg-background">
+      <div class="container-wealth text-center">
+        <h2 class="text-3xl lg:text-4xl font-heading font-bold text-foreground mb-6">
+          Vuoi una consulenza corporate dedicata?
+        </h2>
+        <p class="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+          Parliamo delle esigenze della tua azienda e di come integrarle con la gestione del tuo
+          patrimonio personale
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="https://wa.me/393396005487"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary"
+          >
+            <Icon name="lucide:calendar" class="w-5 h-5" />
+            Prenota consulenza corporate gratuita
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
