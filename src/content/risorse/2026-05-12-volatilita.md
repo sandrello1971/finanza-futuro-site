@@ -2,15 +2,24 @@
 youtubeUrl: "https://www.youtube.com/watch?v=wm1BQhES4sg"
 target: "famiglie-hnwi"
 title: "Volatilità come opportunità: oro, ETF, certificati e arte per grandi patrimoni"
+duration: "7:40"
 excerpt: "La volatilità non è un nemico da temere, è dispersione di prezzi. Chi ha liquidità e tempo può trasformarla in opportunità. Quattro asset class concrete — metalli preziosi, ETF tattici, certificati di investimento e arte — per costruire un portafoglio capace di sfruttare le turbolenze."
 takeaway:
   - "Volatilità ≠ rischio: è dispersione di prezzi, e dove c'è dispersione c'è arbitraggio. Chi ha liquidità e orizzonte può entrare quando gli altri escono."
   - "Metalli preziosi come stabilizzatori attivi: oro come scommessa contro la miopia delle banche centrali, argento come turbo volatile, platino e palladio per l'esposizione industriale strategica."
-  - "ETF tattici per patrimoni rilevanti: a leva inversa per protezione, su volatilità per cavalcarla, su materie prime con roll strategico per evitare il contango. Niente è passivo, tutto è gestito."
+  - "ETF tattici per patrimoni rilevanti: a leva inversa per protezione, su volatilità per cavalcarla, su materie prime con roll strategico per evitare il contango."
   - "Certificati di investimento personalizzati su scadenza, sottostante e livello di protezione. Capitale protetto con effetto memoria è usato dal 40% dei patrimoni HNWI in Germania e Svizzera (fonte da verificare)."
   - "L'arte come asset non correlato: secondo il Deloitte Art & Finance Report l'arte contemporanea ha reso mediamente l'8,5% annuo negli ultimi 20 anni, con accesso oggi facilitato da arte frazionata e tokenization."
 ---
-TODO: paragrafo introduttivo (diventa l'excerpt automatico).
+
+0:00 Introduzione
+0:20 Cos'è la volatilità e da cosa nasce
+1:30 La volatilità come opportunità per grandi patrimoni
+2:10 Metalli preziosi come stabilizzatori attivi
+3:40 ETF tattici per la volatilità
+4:30 Certificati di investimento personalizzati
+5:00 L'arte come riserva di valore non correlata
+6:40 Conclusione: serve un advisor specializzato
 
 ## Trascrizione completa
 
