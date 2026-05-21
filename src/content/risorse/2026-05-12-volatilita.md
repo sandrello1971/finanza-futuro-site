@@ -12,17 +12,6 @@ takeaway:
   - "L'arte come asset non correlato: secondo il Deloitte Art & Finance Report l'arte contemporanea ha reso mediamente l'8,5% annuo negli ultimi 20 anni, con accesso oggi facilitato da arte frazionata e tokenization."
 ---
 
-0:00 Introduzione
-0:20 Cos'è la volatilità e da cosa nasce
-1:30 La volatilità come opportunità per grandi patrimoni
-2:10 Metalli preziosi come stabilizzatori attivi
-3:40 ETF tattici per la volatilità
-4:30 Certificati di investimento personalizzati
-5:00 L'arte come riserva di valore non correlata
-6:40 Conclusione: serve un advisor specializzato
-
-## Trascrizione completa
-
 La volatilità per molti è paura. Per chi ha già un patrimonio importante è il motore delle occasioni irripetibili. In questo video vediamo come trasformarla in rendimento attraverso quattro asset class che i grandi patrimoni conoscono bene ma che spesso vengono sottovalutati: metalli preziosi, ETF tattici, certificati di investimento e arte.
 
 Sono Belkys e questo è Finanza & Futuro, il canale di informazione e analisi sull'economia a livello macro.
