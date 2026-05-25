@@ -13,6 +13,9 @@ export default defineConfig({
   adapter: vercel({
     maxDuration: 10,
   }),
+  security: {
+    checkOrigin: false,
+  },
   build: {
     format: 'file',
   },
