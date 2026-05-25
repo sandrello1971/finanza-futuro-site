@@ -4,10 +4,15 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 import react from '@astrojs/react';
 import icon from 'astro-icon';
+import vercel from '@astrojs/vercel';
 
 export default defineConfig({
   site: 'https://www.finanzafuturo.it',
   trailingSlash: 'never',
+  output: 'static',
+  adapter: vercel({
+    maxDuration: 10,
+  }),
   build: {
     format: 'file',
   },
@@ -17,6 +22,7 @@ export default defineConfig({
       changefreq: 'weekly',
       priority: 0.7,
       lastmod: new Date(),
+      filter: (page) => !page.includes('/admin'),
       i18n: {
         defaultLocale: 'it',
         locales: { it: 'it-IT' },

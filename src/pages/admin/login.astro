@@ -1,0 +1,26 @@
+---
+import AdminLayout from '@/layouts/AdminLayout.astro';
+export const prerender = false;
+
+const hasError = Astro.url.searchParams.get('error') === '1';
+---
+<AdminLayout title="Accesso">
+  <div class="admin-card" style="max-width: 420px; margin: 40px auto 0;">
+    <h2 style="margin: 0 0 6px; font-size: 18px;">Accedi all'area admin</h2>
+    <p style="margin: 0 0 24px; color: #71717a; font-size: 14px;">
+      Inserisci le credenziali per pubblicare nuovi video.
+    </p>
+    {hasError && <div class="alert alert-error">Credenziali non valide.</div>}
+    <form method="POST" action="/api/admin/login">
+      <label for="user">Username</label>
+      <input type="text" id="user" name="user" autocomplete="username" required autofocus />
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" autocomplete="current-password" required />
+      <div class="actions">
+        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+          Entra
+        </button>
+      </div>
+    </form>
+  </div>
+</AdminLayout>

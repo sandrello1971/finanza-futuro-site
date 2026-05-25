@@ -1,0 +1,238 @@
+---
+import AdminLayout from '@/layouts/AdminLayout.astro';
+export const prerender = false;
+
+const user = Astro.locals.adminUser;
+---
+<AdminLayout title="Nuovo video" user={user}>
+  <!-- Step 1: input URL -->
+  <section id="step-url" class="admin-card">
+    <h2 style="margin: 0 0 6px; font-size: 18px;">Pubblica un nuovo video</h2>
+    <p style="margin: 0 0 24px; color: #71717a; font-size: 14px;">
+      Incolla l'URL di YouTube. Il sistema scaricherà titolo, durata, trascrizione e genererà
+      automaticamente excerpt e takeaway con l'AI. Potrai rivedere tutto prima di pubblicare.
+    </p>
+    <form id="form-url">
+      <label for="url">URL YouTube</label>
+      <input type="url" id="url" name="url" placeholder="https://www.youtube.com/watch?v=..." required />
+      <div class="actions">
+        <button type="submit" class="btn btn-primary" id="btn-analizza">Analizza video</button>
+      </div>
+    </form>
+    <div id="status-analizza" style="margin-top: 16px;"></div>
+  </section>
+
+  <!-- Step 2: revisione (nascosto inizialmente) -->
+  <section id="step-review" class="admin-card" style="display: none; margin-top: 24px;">
+    <h2 style="margin: 0 0 6px; font-size: 18px;">Rivedi e pubblica</h2>
+    <p style="margin: 0 0 24px; color: #71717a; font-size: 14px;">
+      Modifica i campi se necessario. Il file Markdown verrà creato e committato su GitHub: Vercel
+      farà il deploy automaticamente in 1-2 minuti.
+    </p>
+    <div id="banner-area"></div>
+    <form id="form-publish">
+      <input type="hidden" id="f-youtubeUrl" />
+      <input type="hidden" id="f-videoId" />
+
+      <label for="f-title">Titolo</label>
+      <input type="text" id="f-title" maxlength="120" required />
+      <div class="hint">Max ~70 caratteri consigliati per SEO.</div>
+
+      <label for="f-excerpt">Excerpt (paragrafo introduttivo)</label>
+      <textarea id="f-excerpt" rows="3" required></textarea>
+      <div class="hint">2-3 frasi, max ~280 caratteri. Diventa anche meta-description.</div>
+
+      <label>Takeaway</label>
+      <div id="takeaway-list"></div>
+      <button type="button" class="btn btn-secondary" id="btn-add-takeaway" style="margin-top: 4px;">
+        + Aggiungi punto
+      </button>
+
+      <label for="f-target">Target</label>
+      <select id="f-target" required>
+        <option value="generale">Generale</option>
+        <option value="dirigenti">Dirigenti &amp; Professionisti</option>
+        <option value="post-exit">Post-Exit</option>
+        <option value="famiglie-hnwi">Famiglie HNWI</option>
+      </select>
+
+      <label for="f-duration">Durata (opzionale)</label>
+      <input type="text" id="f-duration" placeholder="es. 12:34" />
+
+      <label for="f-transcript">Trascrizione completa</label>
+      <textarea id="f-transcript" rows="14" required></textarea>
+      <div class="hint">Estratta automaticamente dai sottotitoli. Se mancante, incollala qui.</div>
+
+      <div class="actions">
+        <button type="submit" class="btn btn-primary" id="btn-pubblica">Pubblica</button>
+        <button type="button" class="btn btn-secondary" id="btn-reset">Ricomincia</button>
+      </div>
+    </form>
+    <div id="status-publish" style="margin-top: 16px;"></div>
+  </section>
+
+  <script is:inline>
+    (function () {
+      const $ = (id) => document.getElementById(id);
+      const formUrl = $('form-url');
+      const formPublish = $('form-publish');
+      const stepUrl = $('step-url');
+      const stepReview = $('step-review');
+      const statusAnalizza = $('status-analizza');
+      const statusPublish = $('status-publish');
+      const bannerArea = $('banner-area');
+      const takeawayList = $('takeaway-list');
+
+      function setStatus(el, type, html) {
+        el.innerHTML = type ? `<div class="alert alert-${type}">${html}</div>` : '';
+      }
+
+      function renderTakeaway(items) {
+        takeawayList.innerHTML = '';
+        items.forEach((t) => addTakeawayRow(t));
+        if (items.length === 0) addTakeawayRow('');
+      }
+
+      function addTakeawayRow(value) {
+        const row = document.createElement('div');
+        row.className = 'row-takeaway';
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.value = value || '';
+        input.placeholder = 'Punto chiave...';
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.textContent = '×';
+        btn.title = 'Rimuovi';
+        btn.onclick = () => row.remove();
+        row.appendChild(input);
+        row.appendChild(btn);
+        takeawayList.appendChild(row);
+      }
+
+      $('btn-add-takeaway').addEventListener('click', () => addTakeawayRow(''));
+
+      function collectTakeaway() {
+        return Array.from(takeawayList.querySelectorAll('input'))
+          .map((i) => i.value.trim())
+          .filter(Boolean);
+      }
+
+      formUrl.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const url = $('url').value.trim();
+        const btn = $('btn-analizza');
+        btn.disabled = true;
+        setStatus(statusAnalizza, 'warning', 'Analisi in corso (può richiedere 5-10 secondi)...');
+        try {
+          const r = await fetch('/api/admin/analizza', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ url }),
+          });
+          const data = await r.json();
+          if (!r.ok) throw new Error(data.error || 'Errore analisi');
+
+          $('f-youtubeUrl').value = data.youtubeUrl;
+          $('f-videoId').value = data.videoId;
+          $('f-duration').value = data.duration || '';
+          $('f-transcript').value = data.transcript || '';
+
+          if (data.metadata) {
+            $('f-title').value = data.metadata.title || data.videoTitle || '';
+            $('f-excerpt').value = data.metadata.excerpt || '';
+            $('f-target').value = data.metadata.target || 'generale';
+            renderTakeaway(data.metadata.takeaway || []);
+          } else {
+            $('f-title').value = data.videoTitle || '';
+            $('f-excerpt').value = '';
+            $('f-target').value = 'generale';
+            renderTakeaway([]);
+          }
+
+          const banners = [];
+          if (!data.transcriptAvailable) {
+            banners.push(
+              '<div class="alert alert-warning">Sottotitoli non disponibili su YouTube: incolla la trascrizione manualmente nel campo sotto.</div>'
+            );
+          }
+          if (data.metadataError) {
+            banners.push(
+              `<div class="alert alert-warning">Generazione automatica metadata fallita: ${escapeHtml(data.metadataError)}. Compila a mano titolo, excerpt e takeaway.</div>`
+            );
+          } else if (!data.metadata) {
+            banners.push(
+              '<div class="alert alert-warning">Metadata non generati (trascrizione mancante o troppo corta): compila a mano titolo, excerpt e takeaway.</div>'
+            );
+          }
+          bannerArea.innerHTML = banners.join('');
+
+          setStatus(statusAnalizza, null);
+          stepUrl.style.display = 'none';
+          stepReview.style.display = 'block';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } catch (err) {
+          setStatus(statusAnalizza, 'error', escapeHtml(err.message || String(err)));
+        } finally {
+          btn.disabled = false;
+        }
+      });
+
+      formPublish.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = $('btn-pubblica');
+        btn.disabled = true;
+        setStatus(statusPublish, 'warning', 'Pubblicazione in corso...');
+        try {
+          const payload = {
+            youtubeUrl: $('f-youtubeUrl').value,
+            title: $('f-title').value.trim(),
+            excerpt: $('f-excerpt').value.trim(),
+            takeaway: collectTakeaway(),
+            target: $('f-target').value,
+            duration: $('f-duration').value.trim() || null,
+            transcript: $('f-transcript').value.trim(),
+          };
+          const r = await fetch('/api/admin/pubblica', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          });
+          const data = await r.json();
+          if (!r.ok) throw new Error(data.error || 'Errore pubblicazione');
+          setStatus(
+            statusPublish,
+            'success',
+            `Video pubblicato! Commit creato su GitHub. Vercel sta facendo il deploy (~1-2 min).<br>
+             <a href="${escapeHtml(data.commitUrl)}" target="_blank" rel="noopener">Vedi commit</a> ·
+             URL finale: <code>/risorse/${escapeHtml(data.publicSlug)}</code>`
+          );
+          btn.disabled = true;
+        } catch (err) {
+          setStatus(statusPublish, 'error', escapeHtml(err.message || String(err)));
+          btn.disabled = false;
+        }
+      });
+
+      $('btn-reset').addEventListener('click', () => {
+        formUrl.reset();
+        formPublish.reset();
+        bannerArea.innerHTML = '';
+        setStatus(statusPublish, null);
+        setStatus(statusAnalizza, null);
+        stepReview.style.display = 'none';
+        stepUrl.style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      function escapeHtml(s) {
+        return String(s)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#039;');
+      }
+    })();
+  </script>
+</AdminLayout>
