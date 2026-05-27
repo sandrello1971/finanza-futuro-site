@@ -61,7 +61,16 @@ const user = Astro.locals.adminUser;
 
       <label for="f-transcript">Trascrizione completa</label>
       <textarea id="f-transcript" rows="14" required></textarea>
-      <div class="hint">Estratta automaticamente dai sottotitoli. Se mancante, incollala qui.</div>
+      <div class="hint">
+        Estratta automaticamente dai sottotitoli. Se mancante, incollala qui e poi clicca
+        "Genera metadata da trascrizione" per far compilare titolo, excerpt e takeaway dall'AI.
+      </div>
+      <div style="margin-top: 10px;">
+        <button type="button" class="btn btn-secondary" id="btn-gen-metadata">
+          ✨ Genera metadata da trascrizione
+        </button>
+        <span id="gen-metadata-status" style="margin-left: 12px; font-size: 13px; color: #71717a;"></span>
+      </div>
 
       <div class="actions">
         <button type="submit" class="btn btn-primary" id="btn-pubblica">Pubblica</button>
@@ -112,6 +121,42 @@ const user = Astro.locals.adminUser;
 
       $('btn-add-takeaway').addEventListener('click', () => addTakeawayRow(''));
 
+      $('btn-gen-metadata').addEventListener('click', async () => {
+        const transcript = $('f-transcript').value.trim();
+        const title = $('f-title').value.trim() || 'Video Finanza & Futuro';
+        const genStatus = $('gen-metadata-status');
+        const btn = $('btn-gen-metadata');
+        if (transcript.length < 100) {
+          genStatus.textContent = 'Incolla prima la trascrizione (almeno 100 caratteri).';
+          genStatus.style.color = '#991b1b';
+          return;
+        }
+        btn.disabled = true;
+        genStatus.style.color = '#71717a';
+        genStatus.textContent = 'Generazione in corso...';
+        try {
+          const r = await fetch('/api/admin/genera-metadata', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ title, transcript }),
+          });
+          const data = await r.json();
+          if (!r.ok) throw new Error(data.error || 'Errore generazione');
+          const m = data.metadata;
+          $('f-title').value = m.title || $('f-title').value;
+          $('f-excerpt').value = m.excerpt || '';
+          $('f-target').value = m.target || $('f-target').value;
+          renderTakeaway(m.takeaway || []);
+          genStatus.style.color = '#166534';
+          genStatus.textContent = 'Metadata generati. Controlla i campi sopra.';
+        } catch (err) {
+          genStatus.style.color = '#991b1b';
+          genStatus.textContent = err.message || String(err);
+        } finally {
+          btn.disabled = false;
+        }
+      });
+
       function collectTakeaway() {
         return Array.from(takeawayList.querySelectorAll('input'))
           .map((i) => i.value.trim())
@@ -152,11 +197,19 @@ const user = Astro.locals.adminUser;
 
           const banners = [];
           if (!data.transcriptAvailable) {
-            const detail = data.transcriptError
-              ? ` (dettaglio tecnico: <code>${escapeHtml(data.transcriptError)}</code>)`
-              : '';
+            const err = data.transcriptError || '';
+            const friendly = /transcript is disabled/i.test(err)
+              ? 'Il creator del video ha disabilitato i sottotitoli su YouTube.'
+              : /no transcript|transcript not available/i.test(err)
+                ? 'Questo video non ha sottotitoli pubblici disponibili.'
+                : `Errore tecnico: <code>${escapeHtml(err)}</code>`;
             banners.push(
-              `<div class="alert alert-warning">Trascrizione non recuperata da YouTube${detail}. Incolla la trascrizione manualmente nel campo sotto.</div>`
+              `<div class="alert alert-warning">
+                <strong>Trascrizione non recuperata.</strong> ${friendly}<br>
+                Incolla la trascrizione completa nel campo in fondo, poi clicca
+                <strong>"✨ Genera metadata da trascrizione"</strong> per far compilare
+                automaticamente titolo, excerpt e takeaway dall'AI.
+              </div>`
             );
           }
           if (data.metadataError) {
