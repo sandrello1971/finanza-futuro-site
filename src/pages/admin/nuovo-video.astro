@@ -152,8 +152,11 @@ const user = Astro.locals.adminUser;
 
           const banners = [];
           if (!data.transcriptAvailable) {
+            const detail = data.transcriptError
+              ? ` (dettaglio tecnico: <code>${escapeHtml(data.transcriptError)}</code>)`
+              : '';
             banners.push(
-              '<div class="alert alert-warning">Sottotitoli non disponibili su YouTube: incolla la trascrizione manualmente nel campo sotto.</div>'
+              `<div class="alert alert-warning">Trascrizione non recuperata da YouTube${detail}. Incolla la trascrizione manualmente nel campo sotto.</div>`
             );
           }
           if (data.metadataError) {

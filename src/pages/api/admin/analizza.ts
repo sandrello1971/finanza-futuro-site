@@ -19,11 +19,14 @@ export const POST: APIRoute = async ({ request }) => {
   const id = extractYouTubeId(url);
   if (!id) return jsonError(400, 'URL YouTube non valido');
 
-  const [videoTitle, duration, transcript] = await Promise.all([
+  const [videoTitle, duration, transcriptResult] = await Promise.all([
     fetchOembedTitle(url),
     fetchDuration(id),
     fetchTranscript(id),
   ]);
+
+  const transcript = transcriptResult.text;
+  const transcriptError = transcriptResult.error;
 
   let metadata: Awaited<ReturnType<typeof generateMetadata>> | null = null;
   let metadataError: string | null = null;
@@ -43,6 +46,7 @@ export const POST: APIRoute = async ({ request }) => {
       duration,
       transcript: transcript ?? '',
       transcriptAvailable: !!transcript,
+      transcriptError,
       metadata,
       metadataError,
     }),
